@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wyroby regionalne sery z Podhala – Tradycyjne sery i produkty regionalne</title>
+  <meta name="description" content="Tradycyjne wyroby regionalne z Podhala. Sery, gołki, bundz, bryndza, konfitury i naturalne produkty tworzone z góralską tradycją." />
+  
+  <!-- Preload Hero Image for faster loading -->
+  <link rel="preload" as="image" href="https://i.postimg.cc/prC3Vdp2/481991112-654745466934044-8917571149513862232-n.jpg" fetchpriority="high" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="https://i.postimg.cc/R0t86dNb/336651511-1152868332058838-5532695333431123428-n.jpg" />
+  <link rel="apple-touch-icon" href="https://i.postimg.cc/R0t86dNb/336651511-1152868332058838-5532695333431123428-n.jpg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* CSS RESET & PERFORMANCE OPTIMIZATIONS */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-main: #2B2118;
+      --bg-dark: #1E1610;
+      --surface-dark: #3A2A1D;
+      --surface-card: #342519;
+      --warm-cream: #F5E8D0;
+      --milk-white: #FFF8ED;
+      --cheese-gold: #D9A441;
+      --smoked-brown: #8B5A2B;
+      --forest-green: #455A3C;
+      --border-light: rgba(245, 232, 208, 0.25);
+      --border-gold: rgba(217, 164, 65, 0.4);
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-main);
+      color: var(--warm-cream);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.8;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      overflow-x: hidden;
+      background-color: var(--bg-main);
+      background-image: radial-gradient(circle at 50% 0%, rgba(58, 42, 29, 0.5) 0%, rgba(43, 33, 24, 1) 100%);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeSpeed;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4, .brand-font {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      color: var(--warm-cream);
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      line-height: 1.1;
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      text-align: center;
+      color: var(--warm-cream);
+    }
+
+    h3 {
+      font-size: 1.6rem;
+      color: var(--cheese-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: rgba(245, 232, 208, 0.9);
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* CONTAINER & LAYOUT */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 5rem 0;
+      position: relative;
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 500px;
+    }
+
+    #home {
+      content-visibility: visible;
+    }
+
+    /* DECORATIVE SYSTEM */
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0.8rem auto 2.5rem;
+    }
+
+    .ornament span:nth-child(1),
+    .ornament span:nth-child(3) {
+      width: 40px;
+      height: 1px;
+      background-color: var(--cheese-gold);
+      display: inline-block;
+    }
+
+    .ornament span:nth-child(2) {
+      color: var(--cheese-gold);
+      font-size: 0.9rem;
+      line-height: 1;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid var(--cheese-gold);
+      color: var(--warm-cream);
+      background-color: transparent;
+      cursor: pointer;
+      transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-solid {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+    }
+
+    @media (hover: hover) {
+      .btn:hover {
+        background-color: var(--cheese-gold);
+        color: var(--bg-main);
+        box-shadow: 0 6px 18px rgba(217, 164, 65, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .btn-solid:hover {
+        background-color: var(--milk-white);
+        border-color: var(--milk-white);
+        color: var(--bg-main);
+      }
+    }
+
+    /* STICKY NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(43, 33, 24, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-light);
+      transform: translateZ(0);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 75px;
+      padding: 0 1.5rem;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 4px;
+      object-fit: cover;
+      border: 1px solid var(--cheese-gold);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--cheese-gold);
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      color: var(--warm-cream);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+
+    /* Mobile Nav Checkbox Toggle */
+    .nav-toggle {
+      display: none;
+    }
+
+    .nav-toggle-label {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      z-index: 1002;
+    }
+
+    .nav-toggle-label span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: var(--warm-cream);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--warm-cream);
+      padding: 0.3rem 0;
+    }
+
+    .nav-link:hover {
+      color: var(--cheese-gold);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+      background: linear-gradient(rgba(43, 33, 24, 0.72), rgba(43, 33, 24, 0.88)),
+                  url('https://i.postimg.cc/prC3Vdp2/481991112-654745466934044-8917571149513862232-n.jpg') center/cover no-repeat;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .hero-content {
+      max-width: 850px;
+      z-index: 2;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cheese-gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-weight: 300;
+      color: var(--milk-white);
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 1rem;
+      background-color: rgba(58, 42, 29, 0.85);
+      border: 1px solid var(--border-light);
+      font-size: 0.85rem;
+      color: var(--warm-cream);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+
+    /* O NAS SECTION */
+    .about-section {
+      background-color: var(--surface-dark);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .about-text {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3.5rem;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: var(--warm-cream);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-light);
+      padding: 2.5rem 1.8rem;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.2s ease;
+    }
+
+    @media (hover: hover) {
+      .feature-card:hover {
+        border-color: var(--cheese-gold);
+      }
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: rgba(245, 232, 208, 0.85);
+      margin-bottom: 0;
+    }
+
+    /* PRODUKTY SECTION (Bez zdjęć) */
+    .products-section {
+      background-color: var(--bg-main);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .category-title {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      color: var(--cheese-gold);
+      margin: 3rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .category-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: var(--border-gold);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-light);
+      padding: 1.8rem;
+      transition: border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media (hover: hover) {
+      .product-card:hover {
+        border-color: var(--cheese-gold);
+      }
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .product-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cheese-gold);
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    .product-title {
+      font-size: 1.5rem;
+      color: var(--warm-cream);
+      margin-bottom: 0.6rem;
+    }
+
+    .product-desc {
+      font-size: 0.9rem;
+      color: rgba(245, 232, 208, 0.85);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.8rem;
+      border-top: 1px dashed rgba(245, 232, 208, 0.18);
+      font-size: 0.82rem;
+      color: var(--cheese-gold);
+      font-weight: 500;
+    }
+
+    /* GALERIA SECTION (Bez napisów / podpisów) */
+    .gallery-section {
+      background-color: var(--bg-dark);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      height: 260px;
+      background-color: var(--surface-dark);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+    }
+
+    .facebook-box {
+      text-align: center;
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-gold);
+      padding: 2.5rem 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .facebook-box p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: var(--warm-cream);
+    }
+
+    /* ZAMÓWIENIA & KONTAKT SECTION */
+    .orders-section {
+      background-color: var(--bg-main);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .highlight-box {
+      background: var(--surface-dark);
+      border: 1px solid var(--cheese-gold);
+      text-align: center;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .highlight-box h3 {
+      font-size: 1.8rem;
+      color: var(--milk-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-light);
+      padding: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contact-card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: rgba(217, 164, 65, 0.15);
+      border: 1px solid var(--cheese-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--cheese-gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-detail {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--cheese-gold);
+      margin: 0.8rem 0;
+      word-break: break-all;
+    }
+
+    .shipping-info-list {
+      list-style: none;
+      text-align: left;
+      margin: 1rem 0;
+      width: 100%;
+    }
+
+    .shipping-info-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed rgba(245, 232, 208, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+    }
+
+    /* OPINIE SECTION (Bez imion/autorów) */
+    .reviews-section {
+      background-color: var(--surface-dark);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .review-card {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-light);
+      padding: 2rem 1.8rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stars {
+      color: var(--cheese-gold);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .review-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--warm-cream);
+      margin-bottom: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--bg-dark);
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo {
+      width: 54px;
+      height: 54px;
+      border-radius: 4px;
+      border: 1px solid var(--cheese-gold);
+      object-fit: cover;
+    }
+
+    .footer-title {
+      font-size: 1.8rem;
+      color: var(--cheese-gold);
+      line-height: 1.1;
+    }
+
+    .footer-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-cream);
+      opacity: 0.8;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem 2.5rem;
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-nav a {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--warm-cream);
+    }
+
+    .footer-nav a:hover {
+      color: var(--cheese-gold);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(245, 232, 208, 0.1);
+      font-size: 0.8rem;
+      color: rgba(245, 232, 208, 0.6);
+    }
+
+    /* RESPONSIVE & MOBILE SMOOTHNESS STYLING */
+    @media (max-width: 900px) {
+      header {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        background-color: #2B2118;
+      }
+
+      .nav-toggle-label {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 75px);
+        background-color: #1E1610;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        will-change: transform;
+      }
+
+      .nav-toggle:checked ~ .nav-menu {
+        transform: translateX(0);
+      }
+
+      .nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+      .nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+        opacity: 0;
+      }
+      .nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+
+      .nav-link {
+        font-size: 1.1rem;
+      }
+
+      .hero {
+        padding-top: 7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 3.5rem 0;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .brand-title {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY NAVIGATION -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <img src="https://i.postimg.cc/R0t86dNb/336651511-1152868332058838-5532695333431123428-n.jpg" alt="Wyroby regionalne sery z Podhala Logo" class="brand-logo" width="42" height="42" decoding="async" />
+        <div class="brand-text">
+          <span class="brand-title">Wyroby regionalne</span>
+          <span class="brand-subtitle">Sery z Podhala</span>
+        </div>
+      </a>
+
+      <!-- Pure CSS Mobile Menu Toggle -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Otwórz menu" />
+      <label for="nav-toggle" class="nav-toggle-label">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <ul class="nav-menu">
+        <li><a href="#o-nas" class="nav-link">O nas</a></li>
+        <li><a href="#produkty" class="nav-link">Produkty</a></li>
+        <li><a href="#galeria" class="nav-link">Galeria</a></li>
+        <li><a href="#zamowienia" class="nav-link">Zamówienia</a></li>
+        <li><a href="#opinie" class="nav-link">Opinie</a></li>
+        <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+        <li>
+          <a href="#zamowienia" class="btn">ZAMÓW TERAZ</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="hero-label">TRADYCJA PODHALA</span>
+        
+        <div class="ornament">
+          <span></span>
+          <span>✦</span>
+          <span></span>
+        </div>
+
+        <h1>Wyroby regionalne<br />prosto z Podhala</h1>
+        
+        <p class="hero-subtitle">
+          Naturalne sery, tradycyjne receptury i prawdziwy, niepowtarzalny smak górskiej tradycji.
+        </p>
+
+        <div class="badges">
+          <div class="badge">
+            <span>🧀</span> Ręczna produkcja
+          </div>
+          <div class="badge">
+            <span>🏔</span> Podhalańska tradycja
+          </div>
+          <div class="badge">
+            <span>🌿</span> Naturalne składniki
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#zamowienia" class="btn btn-solid">ZAMÓW SWOJE WYROBY</a>
+          <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn">
+            FACEBOOK PROFIL
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- O NAS SECTION -->
+    <section class="about-section" id="o-nas">
+      <div class="container">
+        <h2>Smak, który pochodzi z tradycji</h2>
+        
+        <div class="ornament">
+          <span></span>
+          <span>✦</span>
+          <span></span>
+        </div>
+
+        <p class="about-text">
+          Tworzymy regionalne wyroby inspirowane tradycją Podhala. Nasze sery powstają z dbałością o smak, jakość i naturalne składniki. Przepisy przekazywane z pokolenia na pokolenie oraz tradycyjne wędzenie w drewnianej wędzarni nadają naszym wyrobom unikalny charakter, którego nie znajdziesz w zwykłym sklepie.
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🧀</div>
+            <h3>Tradycyjne receptury</h3>
+            <p>Produkty tworzone według sprawdzonych regionalnych metod podhalańskich serowarów.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <h3>Naturalne wędzenie</h3>
+            <p>Wyjątkowy głęboki aromat dzięki tradycyjnemu procesowi wędzenia w dymie z drewna liściastego.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🏔</div>
+            <h3>Smak Podhala</h3>
+            <p>Produkty inspirowane bogatą kulturą góralską, czystym środowiskiem i pasją tworzenia.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUKTY SECTION (Bez zdjęć) -->
+    <section class="products-section" id="produkty">
+      <div class="container">
+        <h2>Nasze wyroby</h2>
+        
+        <div class="ornament">
+          <span></span>
+          <span>✦</span>
+          <span></span>
+        </div>
+
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">
+          Poznaj pełną gamę naszych tradycyjnych specjałów. Wszystkie wyroby przygotowujemy ze świeżego mleka i naturalnych dodatków.
+        </p>
+
+        <!-- CATEGORY 1: SERY REGIONALNE -->
+        <h3 class="category-title">Sery regionalne</h3>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-info">
+              <span class="product-tag">Specjał Góralski</span>
+              <h4 class="product-title">Gołki</h4>
+              <p class="product-desc">Tradycyjne walcowate serki podhalańskie z delikatnego mleka krowiego. Charakteryzują się łagodnym, lekko maślanym smakiem i zwartą konsystencją.</p>
+              <div class="product-footer">
+                <span>Ręczny wyrób</span>
+                <span>100% Naturalne</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-info">
+              <span class="product-tag">Tradycyjny Dym</span>
+              <h4 class="product-title">Gołki wędzone</h4>
+              <p class="product-desc">Wędzone w dymie bukowo-olchowym według starodawnych zasad. Posiadają złocistą skórkę oraz niepowtarzalny, dymny aromat naturalnej wędzarni.</p>
+              <div class="product-footer">
+                <span>Naturalnie wędzone</span>
+                <span>Wyrazisty smak</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-info">
+              <span class="product-tag">Świeży Ser Owczy</span>
+              <h4 class="product-title">Bundz</h4>
+              <p class="product-desc">Świeży, słodkawy ser z mleka owczego. Niezwykle delikatny, miękki i soczysty. Idealny do bezpośredniego spożycia, sałatek oraz z pieczywem.</p>
+              <div class="product-footer">
+                <span>Słodkawy i świeży</span>
+                <span>Podhalański klasyk</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-info">
+              <span class="product-tag">Tradycyjny Smak</span>
+              <h4 class="product-title">Bryndza & Serki podpuszczkowe</h4>
+              <p class="product-desc">Słynny pikantny ser podhalański do smarowania oraz serki podpuszczkowe naturalne. Doskonały dodatek do tradycyjnych dań góralskich.</p>
+              <div class="product-footer">
+                <span>Swojska receptura</span>
+                <span>Bogaty aromat</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 2: DODATKI NATURALNE -->
+        <h3 class="category-title">Dodatki naturalne</h3>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-info">
+              <span class="product-tag">Swojskie Przetwory</span>
+              <h4 class="product-title">Konfitury do serów</h4>
+              <p class="product-desc">Tradycyjna konfitura z żurawiny oraz borówki leśnej. Idealny zestaw smakowy z podgrzanym serem wędzonym i gołkami.</p>
+              <div class="product-footer">
+                <span>Żurawina & Borówka</span>
+                <span>Słodko-wytrawne</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-info">
+              <span class="product-tag">Prosto z Natury</span>
+              <h4 class="product-title">Syropy & Czosnek niedźwiedzi</h4>
+              <p class="product-desc">Górskie syropy ziołowo-owocowe wytwarzane bez konserwantów oraz aromatyczny czosnek niedźwiedzi dodający wyjątkowej nuty naszym wyrobom.</p>
+              <div class="product-footer">
+                <span>100% Ziół i Owoców</span>
+                <span>Prawdziwe zdrowie</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CATEGORY 3: PRODUKTY LEŚNE -->
+        <h3 class="category-title">Produkty leśne</h3>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-info">
+              <span class="product-tag">Skarby Tatrzańskich Lasów</span>
+              <h4 class="product-title">Grzyby marynowane</h4>
+              <p class="product-desc">Starannie wyselekcjonowane borowiki, rydze i podgrzybki zbierane w górskich lasach, zamknięte w tradycyjnej delikatnej zalewie octowej.</p>
+              <div class="product-footer">
+                <span>Ręczne zbieranie</span>
+                <span>Tradycyjny zalewa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALERIA SECTION (Bez podpisów pod zdjęciami) -->
+    <section class="gallery-section" id="galeria">
+      <div class="container">
+        <h2>Galeria naszych produktów</h2>
+        
+        <div class="ornament">
+          <span></span>
+          <span>✦</span>
+          <span></span>
+        </div>
+
+        <p style="text-align: center; max-width: 650px; margin: 0 auto 2.5rem;">
+          Zobacz jak wyglądają nasze świeże wyroby wędzarnicze, sery i wyselekcjonowane przetwory.
+        </p>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/prC3Vdp2/481991112-654745466934044-8917571149513862232-n.jpg" alt="Wyroby regionalne z Podhala" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/prC3Vdpr/482226043-654743120267612-5538472295022929372-n.jpg" alt="Góralskie gołki" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/sxstRWDj/482346387-654743543600903-1988930229607583650-n.jpg" alt="Podhalańskie sery" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/C5SWV8LF/483547726-654744206934170-3109308338748753987-n.jpg" alt="Sery i syropy naturalne" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/T1fZXb2Z/483851008-654745926933998-4258792770713122257-n.jpg" alt="Złocisty serek wędzony" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/C5SWV8LM/483858134-654742270267697-6092933060275660469-n.jpg" alt="Konfitury do serów" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/5ybZMzNN/483888165-654746300267294-4651697310320593491-n.jpg" alt="Grzyby marynowane" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+
+          <div class="gallery-item">
+            <img src="https://i.postimg.cc/zv74DfVf/484032627-654742536934337-1103277063701269595-n.jpg" alt="Tradycyjny bundz i bryndza" loading="lazy" decoding="async" width="400" height="260" />
+          </div>
+        </div>
+
+        <div class="facebook-box">
+          <p>Więcej zdjęć, nowości i aktualnej oferty znajdziesz na naszym Facebooku!</p>
+          <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn btn-solid">
+            ODWIEDŹ NAS NA FACEBOOKU
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ZAMÓWIENIA SECTION -->
+    <section class="orders-section" id="zamowienia">
+      <div class="container">
+        <h2>Zamów prawdziwy smak Podhala</h2>
+        
+        <div class="ornament">
+          <span></span>
+          <span>✦</span>
+          <span></span>
+        </div>
+
+        <div class="highlight-box">
+          <h3>Zapraszamy do składania zamówień</h3>
+          <p style="margin-bottom: 0;">Gwarantujemy najwyższą świeżość produktów, tradycyjną jakość i bezproblemową dostawę prosto do Twojego domu.</p>
+        </div>
+
+        <div class="contact-cards-grid" id="kontakt">
+          <div class="contact-card">
+            <div class="contact-card-icon">📞</div>
+            <h3>Zamówienia telefoniczne</h3>
+            <p>Skontaktuj się z nami bezpośrednio przez telefon:</p>
+            <a href="tel:884377480" class="contact-detail">884 377 480</a>
+            <a href="tel:884377480" class="btn btn-solid" style="margin-top: auto;">ZADZWOŃ TERAZ</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">✉️</div>
+            <h3>Napisz e-mail</h3>
+            <p>Możesz złożyć zamówienie drogą mailową:</p>
+            <a href="mailto:dp85@op.pl" class="contact-detail">dp85@op.pl</a>
+            <a href="mailto:dp85@op.pl" class="btn" style="margin-top: auto;">WYŚLIJ WIADOMOŚĆ</a>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-card-icon">🚚</div>
+            <h3>Wysyłka i Dostawa</h3>
+            <ul class="shipping-info-list">
+              <li><span>📦</span> <strong>Wysyłka kurierem GLS</strong></li>
+              <li><span>📅</span> <strong>Paczki wysyłamy od poniedziałku do środy</strong></li>
+              <li><span>🧊</span> Bezpieczne pakowanie gwarantujące świeżość</li>
+            </ul>
+            <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn" style="margin-top: auto;">ZAMÓW PRZEZ FACEBOOK</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPINIE SECTION (Bez imion) -->
+    <section class="reviews-section" id="opinie">
+      <div class="container">
+        <h2>Opinie naszych klientów</h2>
+        
+        <div class="ornament">
+          <span></span>
+          <span>✦</span>
+          <span></span>
+        </div>
+
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-quote">"Bardzo smaczne i świeże produkty. Godne polecenia 😊"</p>
+          </div>
+
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-quote">"Szybka wysyłka, serki smaczne. Wszystko idealnie zapakowane!"</p>
+          </div>
+
+          <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p class="review-quote">"Serki przepyszne polecam. Smak dzieciństwa i prawdziwych gór."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand">
+        <img src="https://i.postimg.cc/R0t86dNb/336651511-1152868332058838-5532695333431123428-n.jpg" alt="Logo Wyroby Regionalne" class="footer-logo" width="54" height="54" decoding="async" />
+        <h2 class="footer-title">Wyroby regionalne sery z Podhala</h2>
+        <span class="footer-subtitle">Tradycyjny smak gór</span>
+      </div>
+
+      <ul class="footer-nav">
+        <li><a href="#o-nas">O nas</a></li>
+        <li><a href="#produkty">Produkty</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#zamowienia">Zamówienia</a></li>
+        <li><a href="#opinie">Opinie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+
+      <div style="margin-bottom: 2rem;">
+        <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn">
+          DOŁĄCZ DO NAS NA FACEBOOKU
+        </a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Wyroby regionalne sery z Podhala. Wszystkie prawa zastrzeżone.</p>
+        <p style="font-size: 0.75rem; margin-top: 0.4rem; opacity: 0.6;">Tradycyjne podhalańskie serowarstwo | Naturalne wędzenie | Dostawa GLS</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

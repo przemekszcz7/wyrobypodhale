@@ -1,0 +1,6 @@
+{
+  "name": "Wyroby Regionalne - Sery z Podhala",
+  "description": "Tradycyjne wyroby regionalne z Podhala: sery, gołki, bundz, bryndza, konfitury i naturalne produkty z góralską tradycją.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
