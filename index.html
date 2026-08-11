@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wyroby regionalne sery z Podhala – Tradycyjne sery i produkty regionalne</title>
-  <meta name="description" content="Tradycyjne wyroby regionalne z Podhala. Sery, gołki, bundz, bryndza, konfitury i naturalne produkty tworzone z góralską tradycją." />
+  <title>Wyroby regionalne sery z Podhala – Sklep Internetowy</title>
+  <meta name="description" content="Kup tradycyjne sery z Podhala online: gołki, bundz, bryndza, serki podpuszczkowe, konfitury, syropy i grzyby marynowane. Szybka dostawa GLS." />
   
-  <!-- Preload Hero Image for faster loading -->
+  <!-- Preload Hero Image -->
   <link rel="preload" as="image" href="https://i.postimg.cc/prC3Vdp2/481991112-654745466934044-8917571149513862232-n.jpg" fetchpriority="high" />
 
   <!-- Favicon -->
@@ -66,7 +66,7 @@
       position: relative;
     }
 
-    /* TYPOGRAPHY WITH OVERFLOW SAFEGUARDS */
+    /* TYPOGRAPHY */
     h1, h2, h3, h4, .brand-font {
       font-family: var(--font-heading);
       font-weight: 600;
@@ -92,12 +92,12 @@
     }
 
     h3 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       color: var(--cheese-gold);
       margin-bottom: 0.5rem;
     }
 
-    p, span, a, li {
+    p, span, a, li, label, input, select, textarea, button {
       overflow-wrap: break-word;
       word-break: break-word;
     }
@@ -129,10 +129,8 @@
     }
 
     section {
-      padding: 5rem 0;
+      padding: 4.5rem 0;
       position: relative;
-      content-visibility: auto;
-      contain-intrinsic-size: 1px 500px;
       width: 100%;
       overflow: hidden;
     }
@@ -171,7 +169,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.85rem 1.8rem;
+      padding: 0.8rem 1.6rem;
       font-family: var(--font-body);
       font-size: 0.85rem;
       font-weight: 600;
@@ -190,6 +188,11 @@
     .btn-solid {
       background-color: var(--cheese-gold);
       color: var(--bg-main);
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.75rem;
     }
 
     @media (hover: hover) {
@@ -236,7 +239,6 @@
       display: flex;
       align-items: center;
       gap: 0.8rem;
-      max-width: calc(100% - 40px);
     }
 
     .brand-logo {
@@ -278,6 +280,54 @@
       text-overflow: ellipsis;
     }
 
+    .nav-actions-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* CART HEADER BUTTON */
+    .header-cart-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      background-color: var(--surface-dark);
+      border: 1px solid var(--cheese-gold);
+      color: var(--warm-cream);
+      padding: 0 0.85rem;
+      height: 38px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.82rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .header-cart-btn:hover {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+    }
+
+    .cart-badge {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: 12px;
+      line-height: 1.2;
+    }
+
+    .header-cart-btn:hover .cart-badge {
+      background-color: var(--bg-main);
+      color: var(--cheese-gold);
+    }
+
     /* Mobile Nav Checkbox Toggle */
     .nav-toggle {
       display: none;
@@ -305,7 +355,7 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.8rem;
       list-style: none;
     }
 
@@ -325,7 +375,7 @@
     /* HERO SECTION */
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 92vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -424,116 +474,324 @@
       width: 100%;
     }
 
-    @media (hover: hover) {
-      .feature-card:hover {
-        border-color: var(--cheese-gold);
-      }
-    }
-
     .feature-icon {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       display: inline-block;
     }
 
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .feature-card p {
-      font-size: 0.9rem;
-      color: rgba(245, 232, 208, 0.85);
-      margin-bottom: 0;
-    }
-
-    /* PRODUKTY SECTION */
-    .products-section {
+    /* SKLEP / STORE CATALOG SECTION */
+    .store-section {
       background-color: var(--bg-main);
       border-bottom: 1px solid var(--border-light);
     }
 
-    .category-title {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      color: var(--cheese-gold);
-      margin: 3rem 0 1.5rem;
+    .shipping-alert-banner {
+      background-color: rgba(217, 164, 65, 0.12);
+      border: 1px solid var(--cheese-gold);
+      padding: 1rem 1.5rem;
+      border-radius: 4px;
+      text-align: center;
+      margin-bottom: 2.5rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      justify-content: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      color: var(--warm-cream);
+    }
+
+    .shipping-alert-icon {
+      font-size: 1.4rem;
+      color: var(--cheese-gold);
+    }
+
+    /* SEARCH & FILTER BAR */
+    .catalog-controls {
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .search-input-wrapper {
+      position: relative;
       width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    .category-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background-color: var(--border-gold);
-      min-width: 20px;
-    }
-
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
+    .search-input {
       width: 100%;
+      padding: 0.9rem 1.2rem 0.9rem 3rem;
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-gold);
+      border-radius: 4px;
+      color: var(--warm-cream);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .product-card {
+    .search-input:focus {
+      border-color: var(--cheese-gold);
+      box-shadow: 0 0 12px rgba(217, 164, 65, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--cheese-gold);
+      font-size: 1.1rem;
+      pointer-events: none;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .filter-tab {
+      padding: 0.5rem 1.1rem;
       background-color: var(--surface-dark);
       border: 1px solid var(--border-light);
-      padding: 1.8rem;
-      transition: border-color 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+      color: var(--warm-cream);
+      font-size: 0.82rem;
+      font-weight: 500;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
-    @media (hover: hover) {
-      .product-card:hover {
-        border-color: var(--cheese-gold);
-      }
-    }
-
-    .product-info {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .product-tag {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--cheese-gold);
-      margin-bottom: 0.4rem;
+    .filter-tab:hover,
+    .filter-tab.active {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      border-color: var(--cheese-gold);
       font-weight: 600;
     }
 
-    .product-title {
-      font-size: 1.5rem;
-      color: var(--warm-cream);
-      margin-bottom: 0.6rem;
+    /* PRODUCTS GRID & STORE CARDS */
+    .store-products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      width: 100%;
     }
 
-    .product-desc {
-      font-size: 0.9rem;
-      color: rgba(245, 232, 208, 0.85);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+    .store-card {
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+    }
+
+    .store-card:hover {
+      border-color: var(--cheese-gold);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transform: translateY(-3px);
+    }
+
+    .card-top {
+      display: flex;
+      flex-direction: column;
       flex: 1;
     }
 
-    .product-footer {
+    .card-badge-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cheese-gold);
+      font-weight: 700;
+      background: rgba(217, 164, 65, 0.1);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      border: 1px solid var(--border-gold);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      color: var(--warm-cream);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+
+    .card-variant-wrapper {
+      margin: 0.8rem 0 1rem;
+    }
+
+    .card-variant-label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cheese-gold);
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+
+    .card-variant-select {
+      width: 100%;
+      padding: 0.55rem 0.8rem;
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-gold);
+      color: var(--warm-cream);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin: 1.2rem 0 1rem;
       padding-top: 0.8rem;
       border-top: 1px dashed rgba(245, 232, 208, 0.18);
-      font-size: 0.82rem;
+    }
+
+    .card-price {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
       color: var(--cheese-gold);
-      font-weight: 500;
-      gap: 0.5rem;
+      line-height: 1;
+    }
+
+    .card-unit {
+      font-size: 0.85rem;
+      color: rgba(245, 232, 208, 0.7);
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--border-gold);
+      border-radius: 3px;
+      background-color: var(--bg-main);
+      overflow: hidden;
+    }
+
+    .qty-btn {
+      width: 32px;
+      height: 36px;
+      background: transparent;
+      border: none;
+      color: var(--warm-cream);
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.15s ease;
+    }
+
+    .qty-btn:hover {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+    }
+
+    .qty-number {
+      width: 36px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--cheese-gold);
+    }
+
+    .card-actions-grid {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .add-cart-btn {
+      flex: 1;
+      min-width: 0;
+      height: 36px;
+      background-color: var(--surface-dark);
+      color: var(--cheese-gold);
+      border: 1px solid var(--border-gold);
+      padding: 0 0.3rem;
+      border-radius: 3px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .add-cart-btn:hover {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+    }
+
+    .buy-now-btn {
+      flex: 1;
+      min-width: 0;
+      height: 36px;
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      border: 1px solid var(--cheese-gold);
+      padding: 0 0.3rem;
+      border-radius: 3px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .buy-now-btn:hover {
+      background-color: var(--milk-white);
+      color: var(--bg-main);
+      box-shadow: 0 4px 12px rgba(217, 164, 65, 0.3);
     }
 
     /* GALERIA SECTION */
@@ -775,7 +1033,546 @@
       color: rgba(245, 232, 208, 0.6);
     }
 
-    /* RESPONSIVE & MOBILE NO-OVERFLOW SMOOTHNESS STYLING */
+    /* SLIDE-OUT CART DRAWER & MODAL */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .cart-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 480px;
+      height: 100vh;
+      background-color: var(--bg-dark);
+      border-left: 1px solid var(--border-gold);
+      z-index: 2001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .cart-overlay.open .cart-drawer {
+      transform: translateX(0);
+    }
+
+    .cart-drawer-header {
+      padding: 1.2rem 1.5rem;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--surface-dark);
+    }
+
+    .cart-drawer-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--cheese-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .cart-close-btn {
+      background: transparent;
+      border: none;
+      color: var(--warm-cream);
+      font-size: 1.8rem;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .cart-close-btn:hover {
+      color: var(--cheese-gold);
+    }
+
+    .cart-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .cart-empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: rgba(245, 232, 208, 0.7);
+    }
+
+    .cart-empty-icon {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      opacity: 0.5;
+    }
+
+    .cart-items-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-light);
+      padding: 0.9rem;
+      border-radius: 4px;
+    }
+
+    .cart-item-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .cart-item-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--warm-cream);
+      margin-bottom: 0.2rem;
+      line-height: 1.25;
+    }
+
+    .cart-item-variant {
+      font-size: 0.78rem;
+      color: var(--cheese-gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .cart-item-price {
+      font-size: 0.9rem;
+      color: rgba(245, 232, 208, 0.85);
+      font-weight: 500;
+    }
+
+    .cart-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .cart-item-delete {
+      background: transparent;
+      border: none;
+      color: #e53935;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0.2rem 0.4rem;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+
+    .cart-item-delete:hover {
+      opacity: 1;
+    }
+
+    .cart-delivery-section {
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-gold);
+      padding: 1.2rem;
+      border-radius: 4px;
+    }
+
+    .delivery-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cheese-gold);
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .delivery-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .delivery-option-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0.8rem;
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .delivery-option-label:hover,
+    .delivery-option-input:checked + span {
+      color: var(--cheese-gold);
+    }
+
+    .delivery-option-input {
+      accent-color: var(--cheese-gold);
+    }
+
+    /* CHECKOUT FORM IN CART */
+    .cart-checkout-form {
+      background-color: var(--surface-dark);
+      border: 1px solid var(--border-light);
+      padding: 1.2rem;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .form-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--cheese-gold);
+      font-weight: 700;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      color: var(--warm-cream);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.6rem 0.8rem;
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-light);
+      border-radius: 3px;
+      color: var(--warm-cream);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--cheese-gold);
+    }
+
+    .cart-drawer-footer {
+      padding: 1.2rem 1.5rem;
+      background-color: var(--surface-dark);
+      border-top: 1px solid var(--border-light);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: rgba(245, 232, 208, 0.85);
+    }
+
+    .summary-row-total {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cheese-gold);
+      padding-top: 0.5rem;
+      border-top: 1px dashed var(--border-gold);
+    }
+
+    .order-submit-btn {
+      width: 100%;
+      min-height: 46px;
+      padding: 0.75rem 0.8rem;
+      border-radius: 4px;
+      border: none;
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      line-height: 1.25;
+      box-shadow: 0 4px 15px rgba(217, 164, 65, 0.3);
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .order-submit-btn:hover {
+      background-color: var(--milk-white);
+      transform: translateY(-1px);
+    }
+
+    .order-submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-price-pill {
+      white-space: nowrap;
+    }
+
+    /* STICKY BOTTOM CART BAR */
+    body.has-sticky-cart {
+      padding-bottom: 60px !important;
+    }
+
+    body.has-sticky-cart .mobile-floating-cart {
+      display: none !important;
+    }
+
+    body.has-sticky-cart .toast-container {
+      bottom: 4.8rem !important;
+    }
+
+    .sticky-cart-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1E1610;
+      border-top: 2px solid var(--cheese-gold);
+      padding: 0 1.2rem;
+      height: 56px;
+      z-index: 1500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.7);
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+      flex-wrap: nowrap;
+      overflow: hidden;
+    }
+
+    .sticky-cart-bar.visible {
+      transform: translateY(0);
+    }
+
+    .sticky-cart-info {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--warm-cream);
+      font-size: 0.85rem;
+      white-space: nowrap;
+      flex-shrink: 1;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .sticky-cart-badge {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .sticky-cart-btn-action {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      border: none;
+      height: 36px;
+      padding: 0 1rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .sticky-cart-btn-action:hover {
+      background-color: var(--milk-white);
+      transform: translateY(-1px);
+    }
+
+    /* ORDER CONFIRMATION MODAL */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-card {
+      background-color: var(--surface-dark);
+      border: 1px solid var(--cheese-gold);
+      border-radius: 6px;
+      padding: 2rem;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    .modal-title {
+      font-size: 1.8rem;
+      color: var(--cheese-gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-order-number {
+      font-size: 1rem;
+      color: var(--milk-white);
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-summary-box {
+      background-color: var(--bg-main);
+      border: 1px solid var(--border-light);
+      padding: 1rem;
+      border-radius: 4px;
+      text-align: left;
+      font-size: 0.85rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-notice {
+      background-color: rgba(217, 164, 65, 0.12);
+      border: 1px solid var(--cheese-gold);
+      padding: 0.8rem 1rem;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      text-align: left;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      color: var(--warm-cream);
+    }
+
+    /* FLOATING MOBILE CART BUTTON */
+    .mobile-floating-cart {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1500;
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      border: 1px solid var(--milk-white);
+      padding: 0.85rem 1.4rem;
+      border-radius: 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: none;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      animation: pulseCart 2s infinite;
+    }
+
+    @keyframes pulseCart {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      padding: 0.8rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      z-index: 3000;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+    }
+
+    .toast-container.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* RESPONSIVE STYLING */
     @media (max-width: 900px) {
       header {
         backdrop-filter: none;
@@ -787,7 +1584,6 @@
         display: flex;
       }
 
-      /* Mobile menu uses opacity & vertical slide instead of offscreen translateX to avoid horizontal scroll area */
       .nav-menu {
         position: fixed;
         top: 75px;
@@ -828,6 +1624,10 @@
         font-size: 1.1rem;
       }
 
+      .mobile-floating-cart {
+        display: flex;
+      }
+
       .hero {
         padding-top: 7rem;
       }
@@ -839,7 +1639,7 @@
       }
 
       .features-grid,
-      .products-grid,
+      .store-products-grid,
       .gallery-grid,
       .contact-cards-grid,
       .reviews-grid {
@@ -854,19 +1654,15 @@
         font-size: clamp(1.6rem, 6vw, 2.4rem);
       }
 
-      .category-title {
-        font-size: 1.6rem;
-      }
-
       .highlight-box {
         padding: 1.5rem 1rem;
       }
 
-      .product-card,
+      .store-card,
       .feature-card,
       .contact-card,
       .review-card {
-        padding: 1.5rem 1rem;
+        padding: 1.25rem 1rem;
       }
 
       .gallery-item {
@@ -875,6 +1671,36 @@
 
       .footer-title {
         font-size: 1.4rem;
+      }
+
+      .sticky-cart-bar {
+        padding: 0 0.65rem;
+        height: 52px;
+      }
+
+      .sticky-cart-info {
+        font-size: 0.78rem;
+        gap: 0.35rem;
+      }
+
+      @media (max-width: 500px) {
+        .sticky-cart-label {
+          display: none;
+        }
+      }
+
+      .sticky-cart-btn-action {
+        height: 34px;
+        padding: 0 0.6rem;
+        font-size: 0.72rem;
+      }
+
+      .checkout-buttons-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-copy {
+        grid-column: span 1;
       }
     }
 
@@ -919,25 +1745,33 @@
         </div>
       </a>
 
-      <!-- Pure CSS Mobile Menu Toggle -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Otwórz menu" />
-      <label for="nav-toggle" class="nav-toggle-label">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+      <div class="nav-actions-right">
+        <!-- HEADER CART BUTTON -->
+        <button class="header-cart-btn" id="open-cart-btn" aria-label="Otwórz koszyk">
+          <span>🛒 Koszyk</span>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
 
-      <ul class="nav-menu">
-        <li><a href="#o-nas" class="nav-link">O nas</a></li>
-        <li><a href="#produkty" class="nav-link">Produkty</a></li>
-        <li><a href="#galeria" class="nav-link">Galeria</a></li>
-        <li><a href="#zamowienia" class="nav-link">Zamówienia</a></li>
-        <li><a href="#opinie" class="nav-link">Opinie</a></li>
-        <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
-        <li>
-          <a href="#zamowienia" class="btn">ZAMÓW TERAZ</a>
-        </li>
-      </ul>
+        <!-- Pure CSS Mobile Menu Toggle -->
+        <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Otwórz menu" />
+        <label for="nav-toggle" class="nav-toggle-label">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+
+        <ul class="nav-menu">
+          <li><a href="#sklep" class="nav-link">Sklep & Cennik</a></li>
+          <li><a href="#o-nas" class="nav-link">O nas</a></li>
+          <li><a href="#galeria" class="nav-link">Galeria</a></li>
+          <li><a href="#zamowienia" class="nav-link">Zamówienia</a></li>
+          <li><a href="#opinie" class="nav-link">Opinie</a></li>
+          <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
+          <li>
+            <a href="#sklep" class="btn btn-sm">KUP SERY</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -956,7 +1790,7 @@
         <h1>Wyroby regionalne<br />prosto z Podhala</h1>
         
         <p class="hero-subtitle">
-          Naturalne sery, tradycyjne receptury i prawdziwy, niepowtarzalny smak górskiej tradycji.
+          Naturalne sery, tradycyjne receptury i prawdziwy, niepowtarzalny smak górskiej tradycji. Zamów z szybką dostawą!
         </p>
 
         <div class="badges">
@@ -967,15 +1801,55 @@
             <span>🏔</span> Podhalańska tradycja
           </div>
           <div class="badge">
-            <span>🌿</span> Naturalne składniki
+            <span>🚚</span> Wysyłka GLS (pn-śr)
           </div>
         </div>
 
         <div class="hero-actions">
-          <a href="#zamowienia" class="btn btn-solid">ZAMÓW SWOJE WYROBY</a>
+          <a href="#sklep" class="btn btn-solid">ZAMÓW W SKLEPIE ONLINE</a>
           <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn">
             FACEBOOK PROFIL
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKLEP INTERNETOWY / STORE CATALOG SECTION -->
+    <section class="store-section" id="sklep">
+      <div class="container">
+        <h2>Sklep Internetowy & Cennik Wyrobów</h2>
+        
+        <div class="ornament">
+          <span></span>
+          <span>✦</span>
+          <span></span>
+        </div>
+
+        <div class="shipping-alert-banner">
+          <span class="shipping-alert-icon">📦</span>
+          <span><strong>Informacja o dostawie:</strong> Paczki z wyrobami wysyłamy od poniedziałku do środy kurierem GLS!</span>
+        </div>
+
+        <!-- SEARCH AND FILTER TABS -->
+        <div class="catalog-controls">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="search-input" class="search-input" placeholder="Szukaj wyrobu (np. gołka, z czosnkiem, rydze, syrop)..." />
+          </div>
+
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-category="all">Wszystkie wyroby</button>
+            <button class="filter-tab" data-category="male-sery">Sery małe & zestawy</button>
+            <button class="filter-tab" data-category="golki">Gołki & Kolby</button>
+            <button class="filter-tab" data-category="inne-sery">Inne sery & Nabiał</button>
+            <button class="filter-tab" data-category="przetwory">Przetwory & Syropy</button>
+            <button class="filter-tab" data-category="grzyby">Grzyby marynowane</button>
+          </div>
+        </div>
+
+        <!-- PRODUCTS GRID CONTAINER -->
+        <div class="store-products-grid" id="products-grid">
+          <!-- Dynamically populated by JS -->
         </div>
       </div>
     </section>
@@ -1017,121 +1891,7 @@
       </div>
     </section>
 
-    <!-- PRODUKTY SECTION (Bez zdjęć) -->
-    <section class="products-section" id="produkty">
-      <div class="container">
-        <h2>Nasze wyroby</h2>
-        
-        <div class="ornament">
-          <span></span>
-          <span>✦</span>
-          <span></span>
-        </div>
-
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem;">
-          Poznaj pełną gamę naszych tradycyjnych specjałów. Wszystkie wyroby przygotowujemy ze świeżego mleka i naturalnych dodatków.
-        </p>
-
-        <!-- CATEGORY 1: SERY REGIONALNE -->
-        <h3 class="category-title">Sery regionalne</h3>
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-info">
-              <span class="product-tag">Specjał Góralski</span>
-              <h4 class="product-title">Gołki</h4>
-              <p class="product-desc">Tradycyjne walcowate serki podhalańskie z delikatnego mleka krowiego. Charakteryzują się łagodnym, lekko maślanym smakiem i zwartą konsystencją.</p>
-              <div class="product-footer">
-                <span>Ręczny wyrób</span>
-                <span>100% Naturalne</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-info">
-              <span class="product-tag">Tradycyjny Dym</span>
-              <h4 class="product-title">Gołki wędzone</h4>
-              <p class="product-desc">Wędzone w dymie bukowo-olchowym według starodawnych zasad. Posiadają złocistą skórkę oraz niepowtarzalny, dymny aromat naturalnej wędzarni.</p>
-              <div class="product-footer">
-                <span>Naturalnie wędzone</span>
-                <span>Wyrazisty smak</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-info">
-              <span class="product-tag">Świeży Ser Owczy</span>
-              <h4 class="product-title">Bundz</h4>
-              <p class="product-desc">Świeży, słodkawy ser z mleka owczego. Niezwykle delikatny, miękki i soczysty. Idealny do bezpośredniego spożycia, sałatek oraz z pieczywem.</p>
-              <div class="product-footer">
-                <span>Słodkawy i świeży</span>
-                <span>Podhalański klasyk</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-info">
-              <span class="product-tag">Tradycyjny Smak</span>
-              <h4 class="product-title">Bryndza & Serki podpuszczkowe</h4>
-              <p class="product-desc">Słynny pikantny ser podhalański do smarowania oraz serki podpuszczkowe naturalne. Doskonały dodatek do tradycyjnych dań góralskich.</p>
-              <div class="product-footer">
-                <span>Swojska receptura</span>
-                <span>Bogaty aromat</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CATEGORY 2: DODATKI NATURALNE -->
-        <h3 class="category-title">Dodatki naturalne</h3>
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-info">
-              <span class="product-tag">Swojskie Przetwory</span>
-              <h4 class="product-title">Konfitury do serów</h4>
-              <p class="product-desc">Tradycyjna konfitura z żurawiny oraz borówki leśnej. Idealny zestaw smakowy z podgrzanym serem wędzonym i gołkami.</p>
-              <div class="product-footer">
-                <span>Żurawina & Borówka</span>
-                <span>Słodko-wytrawne</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-info">
-              <span class="product-tag">Prosto z Natury</span>
-              <h4 class="product-title">Syropy & Czosnek niedźwiedzi</h4>
-              <p class="product-desc">Górskie syropy ziołowo-owocowe wytwarzane bez konserwantów oraz aromatyczny czosnek niedźwiedzi dodający wyjątkowej nuty naszym wyrobom.</p>
-              <div class="product-footer">
-                <span>100% Ziół i Owoców</span>
-                <span>Prawdziwe zdrowie</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CATEGORY 3: PRODUKTY LEŚNE -->
-        <h3 class="category-title">Produkty leśne</h3>
-        <div class="products-grid">
-          <div class="product-card">
-            <div class="product-info">
-              <span class="product-tag">Skarby Tatrzańskich Lasów</span>
-              <h4 class="product-title">Grzyby marynowane</h4>
-              <p class="product-desc">Starannie wyselekcjonowane borowiki, rydze i podgrzybki zbierane w górskich lasach, zamknięte w tradycyjnej delikatnej zalewie octowej.</p>
-              <div class="product-footer">
-                <span>Ręczne zbieranie</span>
-                <span>Tradycyjny zalewa</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- GALERIA SECTION (Bez podpisów pod zdjęciami) -->
+    <!-- GALERIA SECTION -->
     <section class="gallery-section" id="galeria">
       <div class="container">
         <h2>Galeria naszych produktów</h2>
@@ -1202,7 +1962,7 @@
 
         <div class="highlight-box">
           <h3>Zapraszamy do składania zamówień</h3>
-          <p style="margin-bottom: 0;">Gwarantujemy najwyższą świeżość produktów, tradycyjną jakość i bezproblemową dostawę prosto do Twojego domu.</p>
+          <p style="margin-bottom: 0;">Skorzystaj z naszego koszyka w sklepie internetowym powyżej lub skontaktuj się z nami telefonicznie, mailowo czy na Facebooku!</p>
         </div>
 
         <div class="contact-cards-grid" id="kontakt">
@@ -1227,8 +1987,8 @@
             <h3>Wysyłka i Dostawa</h3>
             <ul class="shipping-info-list">
               <li><span>📦</span> <strong>Wysyłka kurierem GLS</strong></li>
-              <li><span>📅</span> <strong>Paczki wysyłamy od poniedziałku do środy</strong></li>
-              <li><span>🧊</span> Bezpieczne pakowanie gwarantujące świeżość</li>
+              <li><span>📅</span> <strong>Wysyłki od poniedziałku do środy</strong></li>
+              <li><span>💳</span> Przelew (15 zł) lub Pobranie (20 zł)</li>
             </ul>
             <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn" style="margin-top: auto;">ZAMÓW PRZEZ FACEBOOK</a>
           </div>
@@ -1236,7 +1996,7 @@
       </div>
     </section>
 
-    <!-- OPINIE SECTION (Bez imion) -->
+    <!-- OPINIE SECTION -->
     <section class="reviews-section" id="opinie">
       <div class="container">
         <h2>Opinie naszych klientów</h2>
@@ -1277,8 +2037,8 @@
       </div>
 
       <ul class="footer-nav">
+        <li><a href="#sklep">Sklep</a></li>
         <li><a href="#o-nas">O nas</a></li>
-        <li><a href="#produkty">Produkty</a></li>
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#zamowienia">Zamówienia</a></li>
         <li><a href="#opinie">Opinie</a></li>
@@ -1298,5 +2058,711 @@
     </div>
   </footer>
 
+  <!-- FLOATING MOBILE CART BUTTON -->
+  <button class="mobile-floating-cart" id="mobile-cart-btn">
+    <span>🛒 Koszyk</span>
+    <span id="mobile-cart-count">(0)</span>
+  </button>
+
+  <!-- CART OVERLAY & DRAWER -->
+  <div class="cart-overlay" id="cart-overlay">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3 class="cart-drawer-title">
+          <span>🛒 Twój Koszyk</span>
+        </h3>
+        <button class="cart-close-btn" id="close-cart-btn">&times;</button>
+      </div>
+
+      <div class="cart-drawer-body">
+        <div class="cart-empty-state" id="cart-empty">
+          <span class="cart-empty-icon">🧀</span>
+          <p>Twój koszyk jest pusty.</p>
+          <p style="font-size: 0.82rem;">Dodaj tradycyjne wyroby podhalańskie, aby złożyć zamówienie!</p>
+        </div>
+
+        <ul class="cart-items-list" id="cart-items-list">
+          <!-- Dynamically populated -->
+        </ul>
+
+        <div id="cart-checkout-wrapper" style="display: none; flex-direction: column; gap: 1.2rem;">
+          <!-- DELIVERY METHOD SELECTOR -->
+          <div class="cart-delivery-section">
+            <span class="delivery-title">🚚 Opcja Dostawy GLS</span>
+            <div class="delivery-options">
+              <label class="delivery-option-label">
+                <input type="radio" name="delivery" value="15" class="delivery-option-input" checked />
+                <span>Przelew / Wpłata na konto (GLS)</span>
+                <strong>15,00 zł</strong>
+              </label>
+              <label class="delivery-option-label">
+                <input type="radio" name="delivery" value="20" class="delivery-option-input" />
+                <span>Pobranie przy odbiorze (GLS)</span>
+                <strong>20,00 zł</strong>
+              </label>
+            </div>
+          </div>
+
+          <!-- CHECKOUT DETAILS FORM -->
+          <div class="cart-checkout-form">
+            <span class="form-title">📝 Dane do wysyłki</span>
+            
+            <div class="form-group">
+              <label for="cust-name">Imię i Nazwisko *</label>
+              <input type="text" id="cust-name" placeholder="np. Jan Kowalski" required />
+            </div>
+
+            <div class="form-group">
+              <label for="cust-phone">Numer telefonu *</label>
+              <input type="tel" id="cust-phone" placeholder="np. 600 100 200" required />
+            </div>
+
+            <div class="form-group">
+              <label for="cust-address">Adres dostawy (ulica, nr, kod, miasto) *</label>
+              <textarea id="cust-address" rows="2" placeholder="np. ul. Tatrzańska 12, 34-500 Zakopane" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="cust-notes">Uwagi do zamówienia (opcjonalnie)</label>
+              <input type="text" id="cust-notes" placeholder="np. prośba o mocniej wędzone" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cart-drawer-footer" id="cart-drawer-footer" style="display: none;">
+        <div class="summary-row">
+          <span>Suma wyrobów:</span>
+          <strong id="cart-subtotal">0,00 zł</strong>
+        </div>
+        <div class="summary-row">
+          <span>Dostawa GLS:</span>
+          <strong id="cart-shipping">15,00 zł</strong>
+        </div>
+        <div class="summary-row summary-row-total">
+          <span>Razem do zapłaty:</span>
+          <strong id="cart-total">0,00 zł</strong>
+        </div>
+
+        <div id="checkout-error-msg" style="display: none; color: #ff6b6b; font-size: 0.8rem; text-align: center; font-weight: 600; background: rgba(255, 107, 107, 0.1); border: 1px solid #ff6b6b; padding: 0.4rem 0.6rem; border-radius: 4px;"></div>
+
+        <button class="order-submit-btn" id="btn-submit-order">
+          <span>🔒 ZAMAWIAM I PŁACĘ</span>
+          <span class="btn-price-pill">(<span id="cart-btn-total">0,00 zł</span>)</span>
+        </button>
+        <p style="font-size: 0.72rem; text-align: center; color: rgba(245, 232, 208, 0.6); margin-top: 0.2rem; margin-bottom: 0;">
+          Bezpieczne zamówienie online. Wysyłka wyrobów kurierem GLS (Pn-Śr).
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY BOTTOM CART BAR -->
+  <div class="sticky-cart-bar" id="sticky-cart-bar">
+    <div class="sticky-cart-info">
+      <span class="sticky-cart-label">🛒 Koszyk:</span>
+      <span class="sticky-cart-badge" id="sticky-cart-badge">0 wyrobów</span>
+      <span style="color: var(--cheese-gold); font-weight: 700; white-space: nowrap;" id="sticky-cart-total-price">0,00 zł</span>
+    </div>
+    <button class="sticky-cart-btn-action" id="sticky-cart-btn">
+      <span>PRZEJDŹ DO KOSZYKA</span>
+      <span>→</span>
+    </button>
+  </div>
+
+  <!-- ORDER SUCCESS MODAL -->
+  <div class="modal-overlay" id="order-success-modal">
+    <div class="modal-card">
+      <div class="modal-icon">🎉</div>
+      <h3 class="modal-title">Dziękujemy za zamówienie!</h3>
+      <p class="modal-order-number">Numer zamówienia: <strong id="success-order-id">#POD-2026-0000</strong></p>
+
+      <div class="modal-summary-box" id="success-summary-box">
+        <!-- Summary populated dynamically -->
+      </div>
+
+      <div class="modal-notice">
+        <span>📦</span>
+        <span>Twoje zamówienie zostało pomyślnie złożone i przyjęte do realizacji! Wysyłki wyrobów serowych realizujemy od <strong>poniedziałku do środy</strong> kurierem GLS, aby produkty dotarły idealnie świeże.</span>
+      </div>
+
+      <button class="btn btn-solid" id="close-success-modal-btn" style="width: 100%; margin-top: 1.2rem;">
+        WRÓĆ DO SKLEPU
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-container" id="toast-notification">
+    <span>✔</span>
+    <span id="toast-text">Dodano do koszyka!</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // FULL PRODUCTS CATALOG DATABASE
+    const PRODUCTS = [
+      // MAŁE SERKI
+      { id: 'serek-maly-wedzony', name: 'Serek mały wędzony', price: 2.50, unit: 'szt', category: 'male-sery', tag: 'Smak Dymu' },
+      { id: 'serek-maly-bialy', name: 'Serek mały biały', price: 2.50, unit: 'szt', category: 'male-sery', tag: 'Świeży' },
+      { id: 'serek-maly-czosnek-niedz', name: 'Serek mały biały z czosnkiem niedźwiedzim', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Ziołowy' },
+      { id: 'serek-maly-czarnuszka', name: 'Serek mały biały z czarnuszką', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Aromatyczny' },
+      { id: 'serek-maly-papryka', name: 'Serek mały biały z papryką', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Lekko Ostrzejszy' },
+      { id: 'serek-maly-pomidory-bazylia', name: 'Serek mały biały z suszonymi pomidorami i bazylią', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Włoska Nuta' },
+      { id: 'serek-maly-boczek', name: 'Serek mały z boczkiem', price: 3.50, unit: 'szt', category: 'male-sery', tag: 'Wyrazisty' },
+      { id: 'zestaw-serkow', name: 'Zestaw serków', price: 23.00, unit: 'szt', category: 'male-sery', tag: 'Super Zestaw' },
+
+      // GOŁKI I KOLBY
+      { id: 'golka-mala', name: 'Gołka mała', price: 10.00, unit: 'szt', category: 'golki', tag: 'Tradycja' },
+      { id: 'golka-wedzona', name: 'Gołka wędzona', price: 12.00, unit: 'szt', category: 'golki', tag: 'Bestseller' },
+      { id: 'golka-srednia', name: 'Gołka średnia', price: 15.00, unit: 'szt', category: 'golki', tag: 'Klasyk' },
+      { id: 'golka-srednia-biala', name: 'Gołka średnia biała', price: 15.00, unit: 'szt', category: 'golki', tag: 'Świeża' },
+      { id: 'golka-biala-czosnek-niedz', name: 'Gołka biała z czosnkiem niedźwiedzim', price: 16.00, unit: 'szt', category: 'golki', tag: 'Ziołowa' },
+      { id: 'golka-biala-czarnuszka', name: 'Gołka biała z czarnuszką', price: 16.00, unit: 'szt', category: 'golki', tag: 'Swojska' },
+      { id: 'golka-biala-papryka', name: 'Gołka biała z papryką', price: 16.00, unit: 'szt', category: 'golki', tag: 'Pikantna' },
+      { id: 'golka-biala-pomidory-bazylia', name: 'Gołka biała z suszonymi pomidorami i bazylią', price: 16.00, unit: 'szt', category: 'golki', tag: 'Aromatyczna' },
+      { id: 'golka-maslana', name: 'Gołka maślana', price: 16.00, unit: 'szt', category: 'golki', tag: 'Aksamitna' },
+      { id: 'golka-tradycyjna', name: 'Gołka tradycyjna', price: 18.00, unit: 'szt', category: 'golki', tag: 'Mistrzowska' },
+      { id: 'golka-owcza', name: 'Gołka owcza', price: 20.00, unit: 'szt', category: 'golki', tag: 'Mleko Owcze' },
+      { id: 'kolba-duza', name: 'Kolba duża', price: 15.00, unit: 'szt', category: 'golki', tag: 'Duża Porcja' },
+      { id: 'wrzeciono-oryginalne', name: 'Wrzeciono oryginalne', price: 60.00, unit: 'szt', category: 'golki', tag: 'Unikat / Prezent' },
+
+      // INNE SERY I NABIAŁ
+      { id: 'korbacz-wedzony', name: 'Korbacz (wiązka) wędzony', price: 6.00, unit: 'szt', category: 'inne-sery', tag: 'Nici Serowe' },
+      { id: 'korbacz-bialy', name: 'Korbacz (wiązka) biały', price: 6.00, unit: 'szt', category: 'inne-sery', tag: 'Delikatne Nici' },
+      { id: 'bundz-naturalny', name: 'Bundz naturalny', price: 35.00, unit: 'kg', category: 'inne-sery', tag: 'Świeży Owczy / Krowi' },
+      { 
+        id: 'serki-podpuszczkowe', 
+        name: 'Serki podpuszczkowe', 
+        price: 38.00, 
+        unit: 'kg', 
+        category: 'inne-sery', 
+        tag: 'Wybierz Smak',
+        variants: [
+          'czosnek niedźwiedzi',
+          'suszone pomidory',
+          'czarnuszka',
+          'chilli',
+          'żurawina',
+          'orzechy włoskie',
+          'rodzynki'
+        ]
+      },
+      { id: 'bryndza', name: 'Bryndza podhalańska', price: 10.00, unit: 'szt', category: 'inne-sery', tag: 'Do Smarowania' },
+      { id: 'maslo-swojskie', name: 'Masło swojskie', price: 14.00, unit: 'szt', category: 'inne-sery', tag: 'Tradycyjne' },
+
+      // PRZETWORY I SYROPY
+      { 
+        id: 'konfitury-do-serow', 
+        name: 'Konfitura tradycyjna', 
+        price: 18.00, 
+        unit: 'słoik', 
+        category: 'przetwory', 
+        tag: 'Do Serów',
+        variants: [
+          'żurawina',
+          'malina',
+          'czarna jagoda',
+          'brusznica'
+        ]
+      },
+      { id: 'ucierane-platki-rozy', name: 'Ucierane płatki róży', price: 25.00, unit: 'słoik', category: 'przetwory', tag: 'Rarytas' },
+      { id: 'czosnek-niedzwiecki-sloik', name: 'Czosnek niedźwiedzi w słoiku', price: 25.00, unit: 'słoik', category: 'przetwory', tag: '100% Ziół' },
+      { 
+        id: 'syropy-500ml', 
+        name: 'Syrop naturalny 500 ml', 
+        price: 25.00, 
+        unit: 'szt', 
+        category: 'przetwory', 
+        tag: 'Zdrowie z Natury',
+        variants: [
+          'pigwowiec',
+          'sosna',
+          'imbir',
+          'czarna jagoda',
+          'czarna porzeczka',
+          'owoc bzu',
+          'kwiat bzu',
+          'malina',
+          'rokitnik',
+          'głóg',
+          'borówka brusznica',
+          'aronia',
+          'dzika róża'
+        ]
+      },
+      { id: 'zurawina-blotna', name: 'Żurawina błotna', price: 10.00, unit: 'słoik', category: 'przetwory', tag: 'Swojski Słoik' },
+      { id: 'konfitura-z-maliny-maly', name: 'Konfitura z maliny', price: 10.00, unit: 'słoik', category: 'przetwory', tag: 'Słodka Nuta' },
+
+      // GRZYBY
+      { id: 'borowik-marynowany-350ml', name: 'Borowik marynowany 350 ml', price: 25.00, unit: 'słoik', category: 'grzyby', tag: 'Król Lasu' },
+      { id: 'rydze-marynowane', name: 'Rydze marynowane', price: 25.00, unit: 'słoik', category: 'grzyby', tag: 'Górski Rarytas' },
+      { id: 'grzyby-po-cygansku', name: 'Grzyby po cygańsku (kurki, podgrzybki, rydze)', price: 20.00, unit: 'słoik', category: 'grzyby', tag: 'Pikantne & Smaczne' }
+    ];
+
+    // SHOPPING CART STATE
+    let cart = JSON.parse(localStorage.getItem('podhale_cart') || '[]');
+
+    function saveCart() {
+      localStorage.setItem('podhale_cart', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    // FORMAT CURRENCY
+    function formatMoney(amount) {
+      return amount.toFixed(2).replace('.', ',') + ' zł';
+    }
+
+    // RENDER PRODUCTS CATALOG
+    const productsGrid = document.getElementById('products-grid');
+    const searchInput = document.getElementById('search-input');
+    const filterTabs = document.querySelectorAll('.filter-tab');
+
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    function renderProducts() {
+      productsGrid.innerHTML = '';
+
+      const filtered = PRODUCTS.filter(product => {
+        const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
+        const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              (product.tag && product.tag.toLowerCase().includes(searchQuery.toLowerCase()));
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        productsGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: rgba(245, 232, 208, 0.7);">
+            <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">Brak produktów spełniających podane kryteria.</p>
+            <p style="font-size: 0.85rem;">Spróbuj zmienić słowo kluczowe w wyszukiwarce lub wybierz inną kategrię.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'store-card';
+
+        let variantHTML = '';
+        if (product.variants && product.variants.length > 0) {
+          variantHTML = `
+            <div class="card-variant-wrapper">
+              <label class="card-variant-label" for="variant-${product.id}">Smak / Wariant:</label>
+              <select class="card-variant-select" id="variant-${product.id}">
+                ${product.variants.map(v => `<option value="${v}">${v}</option>`).join('')}
+              </select>
+            </div>
+          `;
+        }
+
+        card.innerHTML = `
+          <div class="card-top">
+            <div class="card-badge-row">
+              <span class="card-tag">${product.tag}</span>
+            </div>
+            <h3 class="card-title">${product.name}</h3>
+            ${variantHTML}
+          </div>
+
+          <div>
+            <div class="card-price-row">
+              <span class="card-price">${formatMoney(product.price)}</span>
+              <span class="card-unit">/ ${product.unit}</span>
+            </div>
+
+            <div class="card-actions-grid">
+              <div class="quantity-control">
+                <button class="qty-btn" onclick="changeCardQty('${product.id}', -1)">-</button>
+                <span class="qty-number" id="qty-${product.id}">1</span>
+                <button class="qty-btn" onclick="changeCardQty('${product.id}', 1)">+</button>
+              </div>
+              <button class="add-cart-btn" onclick="addToCart('${product.id}')" title="Dodaj do koszyka">
+                <span>🛒 Do koszyka</span>
+              </button>
+              <button class="buy-now-btn" onclick="buyNow('${product.id}')" title="Kup teraz">
+                <span>⚡ Kup teraz</span>
+              </button>
+            </div>
+          </div>
+        `;
+
+        productsGrid.appendChild(card);
+      });
+    }
+
+    // QTY COUNTER ON CARDS
+    const cardQuantities = {};
+
+    function changeCardQty(productId, delta) {
+      if (!cardQuantities[productId]) cardQuantities[productId] = 1;
+      cardQuantities[productId] += delta;
+      if (cardQuantities[productId] < 1) cardQuantities[productId] = 1;
+      
+      const qtyElem = document.getElementById(`qty-${productId}`);
+      if (qtyElem) qtyElem.innerText = cardQuantities[productId];
+    }
+
+    // ADD TO CART LOGIC
+    function addToCart(productId, showNotification = true) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const qty = cardQuantities[productId] || 1;
+      
+      let variant = null;
+      const variantSelect = document.getElementById(`variant-${productId}`);
+      if (variantSelect) {
+        variant = variantSelect.value;
+      }
+
+      // Check existing item with same ID and variant
+      const existing = cart.find(item => item.id === productId && item.variant === variant);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          unit: product.unit,
+          variant: variant,
+          qty: qty
+        });
+      }
+
+      saveCart();
+      if (showNotification) {
+        showToast(`Dodano do koszyka: ${product.name}${variant ? ' (' + variant + ')' : ''} (${qty} ${product.unit})`);
+      }
+
+      // Reset card qty back to 1
+      cardQuantities[productId] = 1;
+      const qtyElem = document.getElementById(`qty-${productId}`);
+      if (qtyElem) qtyElem.innerText = '1';
+    }
+
+    // BUY NOW LOGIC (Adds to cart & opens cart immediately)
+    function buyNow(productId) {
+      addToCart(productId, false);
+      openCart();
+    }
+
+    // UPDATE CART DRAWER UI
+    function updateCartUI() {
+      const cartBadge = document.getElementById('cart-badge');
+      const mobileCartCount = document.getElementById('mobile-cart-count');
+      const cartEmpty = document.getElementById('cart-empty');
+      const cartItemsList = document.getElementById('cart-items-list');
+      const checkoutWrapper = document.getElementById('cart-checkout-wrapper');
+      const cartFooter = document.getElementById('cart-drawer-footer');
+      const cartSubtotalElem = document.getElementById('cart-subtotal');
+      const cartShippingElem = document.getElementById('cart-shipping');
+      const cartTotalElem = document.getElementById('cart-total');
+
+      const totalItemsCount = cart.reduce((acc, item) => acc + item.qty, 0);
+      cartBadge.innerText = totalItemsCount;
+      mobileCartCount.innerText = `(${totalItemsCount})`;
+
+      let subtotal = 0;
+
+      if (cart.length === 0) {
+        cartEmpty.style.display = 'block';
+        cartItemsList.innerHTML = '';
+        checkoutWrapper.style.display = 'none';
+        cartFooter.style.display = 'none';
+      } else {
+        cartEmpty.style.display = 'none';
+        checkoutWrapper.style.display = 'flex';
+        cartFooter.style.display = 'flex';
+
+        cartItemsList.innerHTML = '';
+
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.qty;
+          subtotal += itemTotal;
+
+          const li = document.createElement('li');
+          li.className = 'cart-item';
+          li.innerHTML = `
+            <div class="cart-item-details">
+              <div class="cart-item-name">${item.name}</div>
+              ${item.variant ? `<div class="cart-item-variant">Wariant: ${item.variant}</div>` : ''}
+              <div class="cart-item-price">${formatMoney(item.price)} × ${item.qty} ${item.unit} = <strong>${formatMoney(itemTotal)}</strong></div>
+            </div>
+
+            <div class="cart-item-actions">
+              <div class="quantity-control" style="transform: scale(0.88);">
+                <button class="qty-btn" onclick="updateCartItemQty(${index}, -1)">-</button>
+                <span class="qty-number">${item.qty}</span>
+                <button class="qty-btn" onclick="updateCartItemQty(${index}, 1)">+</button>
+              </div>
+              <button class="cart-item-delete" onclick="removeCartItem(${index})" title="Usuń z koszyka">✕</button>
+            </div>
+          `;
+          cartItemsList.appendChild(li);
+        });
+      }
+
+      // Get shipping cost
+      const deliveryInput = document.querySelector('input[name="delivery"]:checked');
+      const shippingCost = deliveryInput ? parseFloat(deliveryInput.value) : 15.00;
+      const totalAmount = subtotal + shippingCost;
+
+      cartSubtotalElem.innerText = formatMoney(subtotal);
+      cartShippingElem.innerText = formatMoney(shippingCost);
+      cartTotalElem.innerText = formatMoney(totalAmount);
+
+      const cartBtnTotal = document.getElementById('cart-btn-total');
+      if (cartBtnTotal) cartBtnTotal.innerText = formatMoney(totalAmount);
+
+      // Update sticky bottom cart bar
+      const stickyCartBar = document.getElementById('sticky-cart-bar');
+      const stickyCartBadge = document.getElementById('sticky-cart-badge');
+      const stickyCartTotalPrice = document.getElementById('sticky-cart-total-price');
+
+      if (stickyCartBar && stickyCartBadge && stickyCartTotalPrice) {
+        if (totalItemsCount > 0) {
+          stickyCartBadge.innerText = `${totalItemsCount} ${totalItemsCount === 1 ? 'wyrób' : 'wyroby'}`;
+          stickyCartTotalPrice.innerText = formatMoney(totalAmount);
+          stickyCartBar.classList.add('visible');
+          document.body.classList.add('has-sticky-cart');
+        } else {
+          stickyCartBar.classList.remove('visible');
+          document.body.classList.remove('has-sticky-cart');
+        }
+      }
+    }
+
+    function updateCartItemQty(index, delta) {
+      if (cart[index]) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) {
+          cart.splice(index, 1);
+        }
+        saveCart();
+      }
+    }
+
+    function removeCartItem(index) {
+      if (cart[index]) {
+        cart.splice(index, 1);
+        saveCart();
+      }
+    }
+
+    // TOAST NOTIFICATIONS
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      const toastText = document.getElementById('toast-text');
+      toastText.innerText = message;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // CART DRAWER OPEN / CLOSE
+    const cartOverlay = document.getElementById('cart-overlay');
+    const openCartBtn = document.getElementById('open-cart-btn');
+    const mobileCartBtn = document.getElementById('mobile-cart-btn');
+    const closeCartBtn = document.getElementById('close-cart-btn');
+
+    function openCart() {
+      cartOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      cartOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    openCartBtn.addEventListener('click', openCart);
+    mobileCartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+
+    cartOverlay.addEventListener('click', (e) => {
+      if (e.target === cartOverlay) closeCart();
+    });
+
+    // DELIVERY RADIO CHANGE LISTENER
+    document.querySelectorAll('input[name="delivery"]').forEach(radio => {
+      radio.addEventListener('change', updateCartUI);
+    });
+
+    // SEARCH & FILTER LISTENERS
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderProducts();
+    });
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        activeCategory = tab.dataset.category;
+        renderProducts();
+      });
+    });
+
+    // STICKY CART BUTTON EVENT
+    const stickyCartBtn = document.getElementById('sticky-cart-btn');
+    if (stickyCartBtn) {
+      stickyCartBtn.addEventListener('click', openCart);
+    }
+
+    // CHECKOUT SUBMIT ORDER HANDLER
+    const custNameInput = document.getElementById('cust-name');
+    const custPhoneInput = document.getElementById('cust-phone');
+    const custAddressInput = document.getElementById('cust-address');
+    const checkoutErrorMsg = document.getElementById('checkout-error-msg');
+
+    function clearInputErrors() {
+      if (custNameInput) custNameInput.style.borderColor = '';
+      if (custPhoneInput) custPhoneInput.style.borderColor = '';
+      if (custAddressInput) custAddressInput.style.borderColor = '';
+      if (checkoutErrorMsg) {
+        checkoutErrorMsg.style.display = 'none';
+        checkoutErrorMsg.innerText = '';
+      }
+    }
+
+    [custNameInput, custPhoneInput, custAddressInput].forEach(input => {
+      if (input) {
+        input.addEventListener('input', clearInputErrors);
+      }
+    });
+
+    const submitOrderBtn = document.getElementById('btn-submit-order');
+    if (submitOrderBtn) {
+      submitOrderBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        clearInputErrors();
+
+        const name = custNameInput ? custNameInput.value.trim() : '';
+        const phone = custPhoneInput ? custPhoneInput.value.trim() : '';
+        const address = custAddressInput ? custAddressInput.value.trim() : '';
+        const notes = document.getElementById('cust-notes') ? document.getElementById('cust-notes').value.trim() : '';
+
+        let hasError = false;
+        let errorList = [];
+
+        const phoneDigits = phone.replace(/\D/g, '');
+
+        if (name.length < 3) {
+          if (custNameInput) custNameInput.style.borderColor = '#ff6b6b';
+          errorList.push('Imię i nazwisko');
+          hasError = true;
+        }
+        if (phoneDigits.length < 3) {
+          if (custPhoneInput) custPhoneInput.style.borderColor = '#ff6b6b';
+          errorList.push('Telefon');
+          hasError = true;
+        }
+        if (address.length < 2) {
+          if (custAddressInput) custAddressInput.style.borderColor = '#ff6b6b';
+          errorList.push('Adres dostawy');
+          hasError = true;
+        }
+
+        if (hasError) {
+          const errMsg = '⚠️ Popraw dane: ' + errorList.join(', ');
+          if (checkoutErrorMsg) {
+            checkoutErrorMsg.innerText = errMsg;
+            checkoutErrorMsg.style.display = 'block';
+          }
+          showToast(errMsg);
+          return;
+        }
+
+        if (!cart || cart.length === 0) {
+          if (checkoutErrorMsg) {
+            checkoutErrorMsg.innerText = '⚠️ Twój koszyk jest pusty!';
+            checkoutErrorMsg.style.display = 'block';
+          }
+          showToast('⚠️ Twój koszyk jest pusty!');
+          return;
+        }
+
+        const deliveryInput = document.querySelector('input[name="delivery"]:checked');
+        const isCod = deliveryInput && deliveryInput.value === '20';
+        const shippingType = isCod ? 'GLS Pobranie przy odbiorze (20,00 zł)' : 'GLS Przelew / Wpłata na konto (15,00 zł)';
+        const shippingCost = isCod ? 20.00 : 15.00;
+
+        let itemsHTML = '';
+        let subtotal = 0;
+
+        cart.forEach((item, idx) => {
+          const itemTotal = item.price * item.qty;
+          subtotal += itemTotal;
+          const variantInfo = item.variant ? ` <span style="color: var(--cheese-gold);">(${item.variant})</span>` : '';
+          itemsHTML += `<div style="padding: 0.4rem 0; border-bottom: 1px dashed rgba(245,232,208,0.15);">
+            ${idx + 1}. <strong>${item.name}</strong>${variantInfo}<br />
+            <span style="opacity: 0.85;">${item.qty} ${item.unit} × ${formatMoney(item.price)} = <strong>${formatMoney(itemTotal)}</strong></span>
+          </div>`;
+        });
+
+        const totalSum = subtotal + shippingCost;
+        const orderId = `#POD-2026-${Math.floor(10000 + Math.random() * 90000)}`;
+
+        document.getElementById('success-order-id').innerText = orderId;
+        document.getElementById('success-summary-box').innerHTML = `
+          <div style="margin-bottom: 0.8rem;">
+            <strong style="color: var(--cheese-gold); display: block; margin-bottom: 0.2rem;">👤 Dane zamawiającego:</strong>
+            ${name}<br />
+            Tel: ${phone}<br />
+            Adres: ${address}<br />
+            ${notes ? '<em>Uwagi: ' + notes + '</em><br />' : ''}
+          </div>
+          <div style="margin-bottom: 0.8rem;">
+            <strong style="color: var(--cheese-gold); display: block; margin-bottom: 0.2rem;">🚚 Sposób wysyłki:</strong>
+            ${shippingType}
+          </div>
+          <div>
+            <strong style="color: var(--cheese-gold); display: block; margin-bottom: 0.4rem;">🧀 Wyroby w zamówieniu:</strong>
+            ${itemsHTML}
+            <div style="margin-top: 0.8rem; font-size: 0.95rem; text-align: right;">
+              Wyroby: ${formatMoney(subtotal)} | Dostawa: ${formatMoney(shippingCost)}<br />
+              <strong>RAZEM: <span style="color: var(--cheese-gold); font-size: 1.15rem;">${formatMoney(totalSum)}</span></strong>
+            </div>
+          </div>
+        `;
+
+        // Clear cart & close drawer
+        cart = [];
+        saveCart();
+        closeCart();
+
+        // Clear form inputs
+        if (custNameInput) custNameInput.value = '';
+        if (custPhoneInput) custPhoneInput.value = '';
+        if (custAddressInput) custAddressInput.value = '';
+        const notesInput = document.getElementById('cust-notes');
+        if (notesInput) notesInput.value = '';
+
+        // Show confirmation modal
+        const successModal = document.getElementById('order-success-modal');
+        if (successModal) {
+          successModal.classList.add('open');
+          successModal.scrollTop = 0;
+          document.body.style.overflow = 'hidden';
+        }
+        showToast('🎉 Zamówienie zostało pomyślnie złożone!');
+      });
+    }
+
+    // CLOSE SUCCESS MODAL HANDLER
+    document.getElementById('close-success-modal-btn').addEventListener('click', () => {
+      document.getElementById('order-success-modal').classList.remove('open');
+      document.body.style.overflow = '';
+    });
+
+    // INITIALIZATION
+    renderProducts();
+    updateCartUI();
+  </script>
 </body>
 </html>
