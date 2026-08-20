@@ -1843,7 +1843,7 @@
             <button class="filter-tab" data-category="golki">Gołki & Kolby</button>
             <button class="filter-tab" data-category="inne-sery">Inne sery & Nabiał</button>
             <button class="filter-tab" data-category="przetwory">Przetwory & Syropy</button>
-            <button class="filter-tab" data-category="grzyby">Grzyby marynowane</button>
+            <button class="filter-tab" data-category="grzyby">Grzyby leśne & marynowane</button>
           </div>
         </div>
 
@@ -2295,9 +2295,51 @@
       { id: 'konfitura-z-maliny-maly', name: 'Konfitura z maliny', price: 10.00, unit: 'słoik', category: 'przetwory', tag: 'Słodka Nuta' },
 
       // GRZYBY
-      { id: 'borowik-marynowany-350ml', name: 'Borowik marynowany 350 ml', price: 25.00, unit: 'słoik', category: 'grzyby', tag: 'Król Lasu' },
-      { id: 'rydze-marynowane', name: 'Rydze marynowane', price: 25.00, unit: 'słoik', category: 'grzyby', tag: 'Górski Rarytas' },
-      { id: 'grzyby-po-cygansku', name: 'Grzyby po cygańsku (kurki, podgrzybki, rydze)', price: 20.00, unit: 'słoik', category: 'grzyby', tag: 'Pikantne & Smaczne' }
+      { 
+        id: 'borowik-marynowany-350ml', 
+        name: 'Borowik marynowany 350 ml', 
+        price: 25.00, 
+        unit: 'słoik', 
+        category: 'grzyby', 
+        tag: 'Król Lasu',
+        description: 'Tradycyjne szlachetne borowiki leśne w aromatycznej zalewie octowej.'
+      },
+      { 
+        id: 'rydze-marynowane', 
+        name: 'Rydze marynowane', 
+        price: 25.00, 
+        unit: 'słoik', 
+        category: 'grzyby', 
+        tag: 'Górski Rarytas',
+        description: 'Prawdziwe podhalańskie rydze marynowane w delikatnej zalewie.'
+      },
+      { 
+        id: 'kurki-marynowane', 
+        name: 'Kurki marynowane', 
+        price: 25.00, 
+        unit: 'słoik', 
+        category: 'grzyby', 
+        tag: 'Grzyby Marynowane',
+        description: 'Młode, chrupiące kurki leśne marynowane według tradycyjnego przepisu.'
+      },
+      { 
+        id: 'podgrzybki-marynowane', 
+        name: 'Podgrzybki marynowane', 
+        price: 20.00, 
+        unit: 'słoik', 
+        category: 'grzyby', 
+        tag: 'Grzyby Marynowane',
+        description: 'Wyselekcjonowane podgrzybki w korzennej zalewie marynowanej.'
+      },
+      { 
+        id: 'rydze-po-cygansku', 
+        name: 'Rydze po cygańsku w sosie pomidorowym', 
+        price: 20.00, 
+        unit: 'słoik', 
+        category: 'grzyby', 
+        tag: 'Na zimno lub na ciepło',
+        description: 'Rydze po cygańsku w sosie pomidorowym a\'la sałatka, którą można zjeść na zimno lub na ciepło.'
+      }
     ];
 
     // SHOPPING CART STATE
@@ -2327,7 +2369,8 @@
       const filtered = PRODUCTS.filter(product => {
         const matchesCategory = activeCategory === 'all' || product.category === activeCategory;
         const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                              (product.tag && product.tag.toLowerCase().includes(searchQuery.toLowerCase()));
+                              (product.tag && product.tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                              (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()));
         return matchesCategory && matchesSearch;
       });
 
@@ -2344,6 +2387,10 @@
       filtered.forEach(product => {
         const card = document.createElement('div');
         card.className = 'store-card';
+
+        let descHTML = product.description ? `
+          <p style="font-size: 0.82rem; color: rgba(245, 232, 208, 0.78); line-height: 1.35; margin-bottom: 0.6rem;">${product.description}</p>
+        ` : '';
 
         let variantHTML = '';
         if (product.variants && product.variants.length > 0) {
@@ -2363,6 +2410,7 @@
               <span class="card-tag">${product.tag}</span>
             </div>
             <h3 class="card-title">${product.name}</h3>
+            ${descHTML}
             ${variantHTML}
           </div>
 
