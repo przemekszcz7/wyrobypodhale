@@ -1988,7 +1988,7 @@
             <ul class="shipping-info-list">
               <li><span>📦</span> <strong>Wysyłka kurierem GLS</strong></li>
               <li><span>📅</span> <strong>Wysyłki od poniedziałku do środy</strong></li>
-              <li><span>💳</span> Przelew / Autopay (15 zł) lub Pobranie (20 zł)</li>
+              <li><span>💳</span> <strong>Płatność online Autopay (15 zł)</strong> (BLIK, szybki przelew, karta)</li>
             </ul>
             <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn" style="margin-top: auto;">ZAMÓW PRZEZ FACEBOOK</a>
           </div>
@@ -2092,23 +2092,13 @@
         <div id="cart-checkout-wrapper" style="display: none; flex-direction: column; gap: 1.2rem;">
           <!-- DELIVERY METHOD SELECTOR -->
           <div class="cart-delivery-section">
-            <span class="delivery-title">🚚 Opcja Dostawy i Płatności (GLS)</span>
+            <span class="delivery-title">🚚 Dostawa i Płatność</span>
             <div class="delivery-options">
-              <label class="delivery-option-label">
-                <input type="radio" name="delivery" value="15_autopay" class="delivery-option-input" checked />
-                <span>Autopay (BLIK, Szybki przelew, Karta)</span>
-                <strong>15,00 zł</strong>
-              </label>
-              <label class="delivery-option-label">
-                <input type="radio" name="delivery" value="15" class="delivery-option-input" />
-                <span>Przelew tradycyjny (Wpłata na konto)</span>
-                <strong>15,00 zł</strong>
-              </label>
-              <label class="delivery-option-label">
-                <input type="radio" name="delivery" value="20" class="delivery-option-input" />
-                <span>Pobranie przy odbiorze (GLS)</span>
-                <strong>20,00 zł</strong>
-              </label>
+              <div class="delivery-option-label" style="border-color: var(--cheese-gold);">
+                <input type="radio" name="delivery" value="15_autopay" class="delivery-option-input" checked style="display: none;" />
+                <span>Kurier GLS + Autopay (BLIK, Szybki przelew, Karta)</span>
+                <strong style="color: var(--cheese-gold);">15,00 zł</strong>
+              </div>
             </div>
           </div>
 
@@ -2133,7 +2123,7 @@
 
             <div class="form-group">
               <label for="cust-address">Adres dostawy (ulica, nr, kod, miasto)</label>
-              <textarea id="cust-address" rows="2" placeholder="np. ul. Tatrzańska 12, 34-500 Zakopane (wymagane tylko dla pobrania/przelewu)"></textarea>
+              <textarea id="cust-address" rows="2" placeholder="np. ul. Tatrzańska 12, 34-500 Zakopane"></textarea>
             </div>
 
             <div class="form-group">
@@ -2567,10 +2557,8 @@
         });
       }
 
-      // Get shipping cost
-      const deliveryInput = document.querySelector('input[name="delivery"]:checked');
-      const deliveryValue = deliveryInput ? deliveryInput.value : '15_autopay';
-      const shippingCost = deliveryValue === '20' ? 20.00 : 15.00;
+      // Get shipping cost (fixed 15 zł Autopay + GLS)
+      const shippingCost = 15.00;
       const totalAmount = subtotal + shippingCost;
 
       cartSubtotalElem.innerText = formatMoney(subtotal);
@@ -2713,10 +2701,6 @@
         const address = custAddressInput ? custAddressInput.value.trim() : '';
         const notes = document.getElementById('cust-notes') ? document.getElementById('cust-notes').value.trim() : '';
 
-        const deliveryInput = document.querySelector('input[name="delivery"]:checked');
-        const deliveryVal = deliveryInput ? deliveryInput.value : '15_autopay';
-        const isAutopay = deliveryVal === '15_autopay';
-
         let hasError = false;
         let errorList = [];
 
@@ -2735,13 +2719,6 @@
         if (!email.includes('@') || email.length < 5) {
           if (custEmailInput) custEmailInput.style.borderColor = '#ff6b6b';
           errorList.push('Prawidłowy adres e-mail');
-          hasError = true;
-        }
-
-        // Adres jest wymagany tylko dla tradycyjnego przelewu i pobrania
-        if (!isAutopay && address.length < 2) {
-          if (custAddressInput) custAddressInput.style.borderColor = '#ff6b6b';
-          errorList.push('Adres dostawy');
           hasError = true;
         }
 
@@ -2764,26 +2741,22 @@
           return;
         }
 
-        // PRZEKIEROWANIE DO AUTOPAY
-        if (isAutopay) {
-          if (typeof processAutopayPayment === 'function') {
-            processAutopayPayment({
-              name: name,
-              phone: phone,
-              email: email,
-              notes: notes,
-              cart: cart
-            });
-            return;
-          } else {
-            console.error('Funkcja processAutopayPayment z pliku pay.js nie została odnaleziona.');
-          }
+        // PRZEKIEROWANIE DO PŁATNOŚCI AUTOPAY
+        if (typeof processAutopayPayment === 'function') {
+          processAutopayPayment({
+            name: name,
+            phone: phone,
+            email: email,
+            address: address,
+            notes: notes,
+            cart: cart
+          });
+          return;
         }
 
-        // DLA POZOSTAŁYCH OPCJI (PRZELEW TRADYCYJNY / POBRANIE)
-        const isCod = deliveryVal === '20';
-        const shippingType = isCod ? 'GLS Pobranie przy odbiorze (20,00 zł)' : 'GLS Przelew tradycyjny (15,00 zł)';
-        const shippingCost = isCod ? 20.00 : 15.00;
+        // FALLBACK GDYBY PAY.JS BYŁ OFFLINE
+        const shippingType = 'GLS + Płatność online Autopay (15,00 zł)';
+        const shippingCost = 15.00;
 
         let itemsHTML = '';
         let subtotal = 0;
@@ -2808,11 +2781,11 @@
             ${name}<br />
             Tel: ${phone}<br />
             E-mail: ${email}<br />
-            Adres: ${address}<br />
+            ${address ? 'Adres: ' + address + '<br />' : ''}
             ${notes ? '<em>Uwagi: ' + notes + '</em><br />' : ''}
           </div>
           <div style="margin-bottom: 0.8rem;">
-            <strong style="color: var(--cheese-gold); display: block; margin-bottom: 0.2rem;">🚚 Sposób wysyłki:</strong>
+            <strong style="color: var(--cheese-gold); display: block; margin-bottom: 0.2rem;">🚚 Sposób wysyłki i płatności:</strong>
             ${shippingType}
           </div>
           <div>
@@ -2861,6 +2834,68 @@
   </script>
 
   <!-- PODŁĄCZENIE SKRYPTU PŁATNOŚCI PAY.JS -->
+  // FUNKCJA OBSŁUGUJĄCA PŁATNOŚĆ AUTOPAY
+async function processAutopayPayment(orderData) {
+    const btn = document.getElementById('btn-submit-order');
+    const originalText = btn.innerHTML;
+    
+    try {
+        btn.disabled = true;
+        btn.innerHTML = '<span>⏳ PRZETWARZANIE...</span>';
+
+        // Wyliczenie kwoty całkowitej (produkty + dostawa)
+        const subtotal = orderData.cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+        const totalAmount = subtotal + 15.00;
+
+        // Tworzenie opisu zamówienia
+        const orderTitle = `Zamówienie sery z Podhala (${orderData.cart.length} prod.)`;
+
+        // Wysyłka do Twojego API (zmień URL '/api/pay' na dokładny ścieżkę do serwera, np. Vercel)
+        const response = await fetch('/api/pay', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                amount: totalAmount,
+                title: orderTitle,
+                email: orderData.email
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Błąd połączenia z bramką płatności');
+        }
+
+        const data = await response.json();
+
+        if (data.actionUrl && data.params) {
+            // Tworzenie ukrytego formularza POST i natychmiastowe wysłanie klienta do Autopay
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = data.actionUrl;
+
+            Object.keys(data.params).forEach(key => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = data.params[key];
+                form.appendChild(input);
+            });
+
+            document.body.appendChild(form);
+            form.submit();
+        } else {
+            throw new Error('Błędna odpowiedź z serwera płatności');
+        }
+
+    } catch (error) {
+        console.error('Autopay Error:', error);
+        showToast('⚠️ Błąd płatności: ' + error.message);
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+    }
+}
   <script src="pay.js"></script>
 </body>
 </html>
