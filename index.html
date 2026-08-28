@@ -2741,34 +2741,63 @@
           return;
         }
 
-        // WYWOŁANIE ENDPOINTU API ZAMIAST BEZPOŚREDNIEGO PAY.JS
+        // WYWOŁANIE ENDPOINTU API PŁATNOŚCI (osobny projekt Vercel z pay.js)
+        // UWAGA: podmień PAY_API_URL na prawdziwy adres Twojego backendu płatności
+        const PAY_API_URL = 'https://wyrobypodhalepay.vercel.app/api/pay';
+
         try {
           submitOrderBtn.disabled = true;
           submitOrderBtn.innerText = 'PRZETWARZANIE...';
 
-          const response = await fetch('/api/pay', {
+          const paySubtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+          const payShipping = 15.00;
+          const payAmount = (paySubtotal + payShipping).toFixed(2);
+          const payTitle = `Zamówienie sery (${cart.length} prod.)`;
+
+          const response = await fetch(PAY_API_URL, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              name: name,
-              phone: phone,
-              email: email,
-              address: address,
-              notes: notes,
-              cart: cart
+              amount: payAmount,
+              title: payTitle,
+              email: email
             })
           });
 
+          if (!response.ok) {
+            throw new Error('Serwer płatności zwrócił błąd: ' + response.status);
+          }
+
           const resData = await response.json();
 
-          if (resData.redirectUrl) {
-            window.location.href = resData.redirectUrl;
-            return;
+          if (resData.actionUrl && resData.params) {
+            // Budujemy i wysyłamy formularz POST bezpośrednio do Autopay
+            const payForm = document.createElement('form');
+            payForm.method = 'POST';
+            payForm.action = resData.actionUrl;
+
+            Object.keys(resData.params).forEach(key => {
+              const inputEl = document.createElement('input');
+              inputEl.type = 'hidden';
+              inputEl.name = key;
+              inputEl.value = resData.params[key];
+              payForm.appendChild(inputEl);
+            });
+
+            document.body.appendChild(payForm);
+            payForm.submit();
+            return; // przerywamy dalsze wykonanie - użytkownik zostaje przekierowany do Autopay
           }
+
+          console.error('Nieoczekiwana odpowiedź z API płatności:', resData);
+          showToast('⚠️ Nie udało się uruchomić płatności. Spróbuj ponownie.');
+          return;
         } catch (err) {
-          console.error('Błąd wywołania API /api/pay:', err);
+          console.error('Błąd wywołania API płatności:', err);
+          showToast('⚠️ Błąd połączenia z systemem płatności.');
+          return;
         } finally {
           submitOrderBtn.disabled = false;
           submitOrderBtn.innerHTML = '<span>🔒 ZAMAWIAM I PŁACĘ</span> <span class="btn-price-pill">(<span id="cart-btn-total">' + document.getElementById('cart-total').innerText + '</span>)</span>';
