@@ -1988,7 +1988,7 @@
             <ul class="shipping-info-list">
               <li><span>📦</span> <strong>Wysyłka kurierem GLS</strong></li>
               <li><span>📅</span> <strong>Wysyłki od poniedziałku do środy</strong></li>
-              <li><span>💳</span> Przelew (15 zł) lub Pobranie (20 zł)</li>
+              <li><span>💳</span> Przelew / Autopay (15 zł) lub Pobranie (20 zł)</li>
             </ul>
             <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn" style="margin-top: auto;">ZAMÓW PRZEZ FACEBOOK</a>
           </div>
@@ -2092,11 +2092,16 @@
         <div id="cart-checkout-wrapper" style="display: none; flex-direction: column; gap: 1.2rem;">
           <!-- DELIVERY METHOD SELECTOR -->
           <div class="cart-delivery-section">
-            <span class="delivery-title">🚚 Opcja Dostawy GLS</span>
+            <span class="delivery-title">🚚 Opcja Dostawy i Płatności (GLS)</span>
             <div class="delivery-options">
               <label class="delivery-option-label">
-                <input type="radio" name="delivery" value="15" class="delivery-option-input" checked />
-                <span>Przelew / Wpłata na konto (GLS)</span>
+                <input type="radio" name="delivery" value="15_autopay" class="delivery-option-input" checked />
+                <span>Autopay (BLIK, Szybki przelew, Karta)</span>
+                <strong>15,00 zł</strong>
+              </label>
+              <label class="delivery-option-label">
+                <input type="radio" name="delivery" value="15" class="delivery-option-input" />
+                <span>Przelew tradycyjny (Wpłata na konto)</span>
                 <strong>15,00 zł</strong>
               </label>
               <label class="delivery-option-label">
@@ -2122,8 +2127,13 @@
             </div>
 
             <div class="form-group">
-              <label for="cust-address">Adres dostawy (ulica, nr, kod, miasto) *</label>
-              <textarea id="cust-address" rows="2" placeholder="np. ul. Tatrzańska 12, 34-500 Zakopane" required></textarea>
+              <label for="cust-email">Adres e-mail *</label>
+              <input type="email" id="cust-email" placeholder="np. jan.kowalski@email.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="cust-address">Adres dostawy (ulica, nr, kod, miasto)</label>
+              <textarea id="cust-address" rows="2" placeholder="np. ul. Tatrzańska 12, 34-500 Zakopane (wymagane tylko dla pobrania/przelewu)"></textarea>
             </div>
 
             <div class="form-group">
@@ -2559,7 +2569,8 @@
 
       // Get shipping cost
       const deliveryInput = document.querySelector('input[name="delivery"]:checked');
-      const shippingCost = deliveryInput ? parseFloat(deliveryInput.value) : 15.00;
+      const deliveryValue = deliveryInput ? deliveryInput.value : '15_autopay';
+      const shippingCost = deliveryValue === '20' ? 20.00 : 15.00;
       const totalAmount = subtotal + shippingCost;
 
       cartSubtotalElem.innerText = formatMoney(subtotal);
@@ -2669,12 +2680,14 @@
     // CHECKOUT SUBMIT ORDER HANDLER
     const custNameInput = document.getElementById('cust-name');
     const custPhoneInput = document.getElementById('cust-phone');
+    const custEmailInput = document.getElementById('cust-email');
     const custAddressInput = document.getElementById('cust-address');
     const checkoutErrorMsg = document.getElementById('checkout-error-msg');
 
     function clearInputErrors() {
       if (custNameInput) custNameInput.style.borderColor = '';
       if (custPhoneInput) custPhoneInput.style.borderColor = '';
+      if (custEmailInput) custEmailInput.style.borderColor = '';
       if (custAddressInput) custAddressInput.style.borderColor = '';
       if (checkoutErrorMsg) {
         checkoutErrorMsg.style.display = 'none';
@@ -2682,7 +2695,7 @@
       }
     }
 
-    [custNameInput, custPhoneInput, custAddressInput].forEach(input => {
+    [custNameInput, custPhoneInput, custEmailInput, custAddressInput].forEach(input => {
       if (input) {
         input.addEventListener('input', clearInputErrors);
       }
@@ -2696,8 +2709,13 @@
 
         const name = custNameInput ? custNameInput.value.trim() : '';
         const phone = custPhoneInput ? custPhoneInput.value.trim() : '';
+        const email = custEmailInput ? custEmailInput.value.trim() : '';
         const address = custAddressInput ? custAddressInput.value.trim() : '';
         const notes = document.getElementById('cust-notes') ? document.getElementById('cust-notes').value.trim() : '';
+
+        const deliveryInput = document.querySelector('input[name="delivery"]:checked');
+        const deliveryVal = deliveryInput ? deliveryInput.value : '15_autopay';
+        const isAutopay = deliveryVal === '15_autopay';
 
         let hasError = false;
         let errorList = [];
@@ -2714,7 +2732,14 @@
           errorList.push('Telefon');
           hasError = true;
         }
-        if (address.length < 2) {
+        if (!email.includes('@') || email.length < 5) {
+          if (custEmailInput) custEmailInput.style.borderColor = '#ff6b6b';
+          errorList.push('Prawidłowy adres e-mail');
+          hasError = true;
+        }
+
+        // Adres jest wymagany tylko dla tradycyjnego przelewu i pobrania
+        if (!isAutopay && address.length < 2) {
           if (custAddressInput) custAddressInput.style.borderColor = '#ff6b6b';
           errorList.push('Adres dostawy');
           hasError = true;
@@ -2739,9 +2764,25 @@
           return;
         }
 
-        const deliveryInput = document.querySelector('input[name="delivery"]:checked');
-        const isCod = deliveryInput && deliveryInput.value === '20';
-        const shippingType = isCod ? 'GLS Pobranie przy odbiorze (20,00 zł)' : 'GLS Przelew / Wpłata na konto (15,00 zł)';
+        // PRZEKIEROWANIE DO AUTOPAY
+        if (isAutopay) {
+          if (typeof processAutopayPayment === 'function') {
+            processAutopayPayment({
+              name: name,
+              phone: phone,
+              email: email,
+              notes: notes,
+              cart: cart
+            });
+            return;
+          } else {
+            console.error('Funkcja processAutopayPayment z pliku pay.js nie została odnaleziona.');
+          }
+        }
+
+        // DLA POZOSTAŁYCH OPCJI (PRZELEW TRADYCYJNY / POBRANIE)
+        const isCod = deliveryVal === '20';
+        const shippingType = isCod ? 'GLS Pobranie przy odbiorze (20,00 zł)' : 'GLS Przelew tradycyjny (15,00 zł)';
         const shippingCost = isCod ? 20.00 : 15.00;
 
         let itemsHTML = '';
@@ -2766,6 +2807,7 @@
             <strong style="color: var(--cheese-gold); display: block; margin-bottom: 0.2rem;">👤 Dane zamawiającego:</strong>
             ${name}<br />
             Tel: ${phone}<br />
+            E-mail: ${email}<br />
             Adres: ${address}<br />
             ${notes ? '<em>Uwagi: ' + notes + '</em><br />' : ''}
           </div>
@@ -2791,6 +2833,7 @@
         // Clear form inputs
         if (custNameInput) custNameInput.value = '';
         if (custPhoneInput) custPhoneInput.value = '';
+        if (custEmailInput) custEmailInput.value = '';
         if (custAddressInput) custAddressInput.value = '';
         const notesInput = document.getElementById('cust-notes');
         if (notesInput) notesInput.value = '';
@@ -2816,5 +2859,8 @@
     renderProducts();
     updateCartUI();
   </script>
+
+  <!-- PODŁĄCZENIE SKRYPTU PŁATNOŚCI PAY.JS -->
+  <script src="pay.js"></script>
 </body>
 </html>
