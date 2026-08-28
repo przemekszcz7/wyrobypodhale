@@ -1,50 +1,73 @@
-const crypto = require('crypto');
+// Funkcja pomocnicza do generowania HASH SHA-256 w przeglądarce
+async function generateAutopayHash(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
 
-module.exports = async (req, res) => {
-    // Nagłówki CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
-    if (req.method === 'OPTIONS') return res.status(200).end();
-    if (req.method !== 'POST') return res.status(405).json({ error: 'Błąd metody' });
+// Główna funkcja wywoływana przy płatności
+async function processAutopayPayment(orderData) {
+    const btn = document.getElementById('btn-submit-order');
+    const originalText = btn ? btn.innerHTML : '';
 
     try {
-        const { amount, title, email } = req.body;
-
-        const serviceID = process.env.AUTOPAY_SERVICE_ID;
-        const hashKey = process.env.AUTOPAY_HASH_KEY;
-        const autopayUrl = process.env.AUTOPAY_URL || 'https://pay.autopay.eu/payment';
-
-        if (!serviceID || !hashKey) {
-            return res.status(500).json({ error: 'Brak konfiguracji zmiennych środowiskowych' });
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<span>⏳ PRZETWARZANIE...</span>';
         }
 
-        const orderID = 'SER-ORDER-' + Date.now();
-        const formattedAmount = parseFloat(amount).toFixed(2);
-        const currency = 'PLN';
+        // KONFIGURACJA AUTOPAY
+        const serviceID = '220936';
+        const hashKey = '353a7d95b0c32400acfaf44c7a07aea2479dd25dec0f0159d41f94bf52d63a73';
+        const autopayUrl = 'https://pay.autopay.eu/payment';
 
+        // PRZYGOTOWANIE DANYCH
+        const subtotal = orderData.cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+        const totalAmount = (subtotal + 15.00).toFixed(2); // Format 0.00
+        const orderID = 'SER-ORDER-' + Date.now();
+        const currency = 'PLN';
+        const title = `Zamówienie sery (${orderData.cart.length} prod.)`;
+        const email = orderData.email;
+
+        // GENEROWANIE HASH
+        const rawHashString = `${serviceID}|${orderID}|${totalAmount}|${currency}|${title}|${email}|${hashKey}`;
+        const hash = await generateAutopayHash(rawHashString);
+
+        // PRZYGOTOWANIE FORMULARZA POST
         const params = {
             ServiceID: serviceID,
             OrderID: orderID,
-            Amount: formattedAmount,
+            Amount: totalAmount,
             Currency: currency,
             Title: title,
-            CustomerEmail: email
+            CustomerEmail: email,
+            Hash: hash
         };
 
-        // Generowanie ciągu do wyliczenia HASH (kolejność parametrów zgodna ze specyfikacją Autopay)
-        const rawHashString = `${params.ServiceID}|${params.OrderID}|${params.Amount}|${params.Currency}|${params.Title}|${params.CustomerEmail}|${hashKey}`;
-        const hash = crypto.createHash('sha256').update(rawHashString, 'utf8').digest('hex');
+        // AUTO-SUBMIT FORMULARZA DO AUTOPAY
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = autopayUrl;
 
-        return res.status(200).json({
-            actionUrl: autopayUrl,
-            params: {
-                ...params,
-                Hash: hash
-            }
+        Object.keys(params).forEach(key => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = params[key];
+            form.appendChild(input);
         });
-    } catch (err) {
-        return res.status(500).json({ error: err.message });
+
+        document.body.appendChild(form);
+        form.submit();
+
+    } catch (error) {
+        console.error('Autopay Error:', error);
+        alert('⚠️ Błąd płatności: ' + error.message);
+        if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+        }
     }
-};
+}
