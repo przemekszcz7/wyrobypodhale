@@ -2355,7 +2355,7 @@
 
   <!-- TOAST NOTIFICATION -->
   <div class="toast-container" id="toast-notification">
-    <span>✔</span>
+    <span id="toast-icon">✔</span>
     <span id="toast-text">Dodano do koszyka!</span>
   </div>
 
@@ -2761,13 +2761,32 @@
     }
 
     // TOAST NOTIFICATIONS
+    let toastTimer = null;
     function showToast(message) {
       const toast = document.getElementById('toast-notification');
       const toastText = document.getElementById('toast-text');
-      toastText.innerText = message;
+      const toastIcon = document.getElementById('toast-icon');
+
+      let text = message || '';
+      let icon = '✔';
+
+      if (text.startsWith('✔ ') || text.startsWith('✔')) {
+        text = text.replace(/^✔\s*/, '');
+        icon = '✔';
+      } else if (text.startsWith('⚠️ ') || text.startsWith('⚠️')) {
+        text = text.replace(/^⚠️\s*/, '');
+        icon = '⚠️';
+      } else if (text.startsWith('🎉 ') || text.startsWith('🎉')) {
+        text = text.replace(/^🎉\s*/, '');
+        icon = '🎉';
+      }
+
+      if (toastIcon) toastIcon.innerText = icon;
+      if (toastText) toastText.innerText = text;
       toast.classList.add('show');
 
-      setTimeout(() => {
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
         toast.classList.remove('show');
       }, 3000);
     }
@@ -3120,7 +3139,7 @@
           siteTermsBanner.classList.remove('visible');
         }
         document.body.classList.remove('has-bottom-terms');
-        showToast('✔ Zaakceptowano Regulamin i Politykę Prywatności');
+        showToast('Zaakceptowano Regulamin i Politykę Prywatności');
       });
     }
 
