@@ -1363,6 +1363,129 @@
       bottom: 4.8rem !important;
     }
 
+    body.has-bottom-terms .toast-container {
+      bottom: 6.5rem !important;
+    }
+
+    /* BOTTOM TERMS & PRIVACY POPUP BANNER */
+    .bottom-terms-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #1a130c;
+      border-top: 2px solid var(--cheese-gold);
+      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.75);
+      z-index: 2600;
+      padding: 0.95rem 1.4rem;
+      box-sizing: border-box;
+      transform: translateY(115%);
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .bottom-terms-banner.visible {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .bottom-terms-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .bottom-terms-content {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--warm-cream);
+      font-size: 0.85rem;
+      line-height: 1.45;
+      flex: 1;
+    }
+
+    .bottom-terms-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .bottom-terms-text {
+      flex: 1;
+    }
+
+    .bottom-terms-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    .bottom-terms-btn {
+      background-color: var(--cheese-gold);
+      color: var(--bg-main);
+      border: none;
+      padding: 0.75rem 1.4rem;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .bottom-terms-btn:hover {
+      background-color: var(--milk-white);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(217, 164, 65, 0.3);
+    }
+
+    .bottom-terms-link {
+      color: var(--cheese-gold);
+      text-decoration: underline;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .bottom-terms-link:hover {
+      color: var(--milk-white);
+    }
+
+    @media (max-width: 860px) {
+      .bottom-terms-banner {
+        padding: 0.9rem 1rem;
+      }
+      .bottom-terms-inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+      }
+      .bottom-terms-content {
+        gap: 0.7rem;
+        font-size: 0.82rem;
+      }
+      .bottom-terms-icon {
+        font-size: 1.5rem;
+      }
+      .bottom-terms-actions {
+        width: 100%;
+      }
+      .bottom-terms-btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.7rem 1rem;
+      }
+    }
+
     .sticky-cart-bar {
       position: fixed;
       bottom: 0;
@@ -2130,6 +2253,15 @@
               <label for="cust-notes">Uwagi do zamówienia (opcjonalnie)</label>
               <input type="text" id="cust-notes" placeholder="np. prośba o mocniej wędzone" />
             </div>
+
+            <div class="form-group" style="margin-top: 0.6rem;">
+              <div id="cust-terms-container" style="padding: 0.65rem 0.8rem; border-radius: 4px; border: 1px dashed rgba(217, 164, 65, 0.35); background: rgba(0,0,0,0.18); transition: all 0.2s ease;">
+                <label style="display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.78rem; line-height: 1.45; cursor: pointer; color: var(--wood-cream); user-select: none; margin: 0;">
+                  <input type="checkbox" id="cust-terms" style="margin-top: 0.12rem; width: 18px; height: 18px; accent-color: var(--cheese-gold); cursor: pointer; flex-shrink: 0;" />
+                  <span>Oświadczam, że zapoznałem/am się z <a href="regulamin.html" target="_blank" style="color: var(--cheese-gold); text-decoration: underline; font-weight: 600;">Regulaminem Sklepu i Polityką Prywatności</a> oraz akceptuję ich treść. <strong>(wymagane do złożenia zamówienia)</strong> *</span>
+                </label>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2172,6 +2304,31 @@
       <span>PRZEJDŹ DO KOSZYKA</span>
       <span>→</span>
     </button>
+  </div>
+
+  <!-- SITE ENTRY TERMS & PRIVACY BOTTOM POPUP BANNER -->
+  <div class="bottom-terms-banner" id="site-terms-banner" role="region" aria-label="Zgoda na Regulamin i Politykę Prywatności">
+    <div class="bottom-terms-inner">
+      <div class="bottom-terms-content">
+        <div class="bottom-terms-icon">📜</div>
+        <div class="bottom-terms-text">
+          <div style="font-weight: 700; color: var(--cheese-gold); margin-bottom: 0.2rem; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+            <span>Regulamin Sklepu oraz Polityka Prywatności</span>
+            <span style="font-size: 0.72rem; background: rgba(217,164,65,0.15); color: var(--cheese-gold); border: 1px solid var(--border-gold); padding: 0.1rem 0.4rem; border-radius: 2px; font-weight: 600;">serypodhale.pl</span>
+          </div>
+          <div>
+            Witaj w oficjalnym sklepie <strong>Sery z Podhala</strong>! Korzystając ze sklepu, akceptujesz nasz
+            <a href="regulamin.html" target="_blank" class="bottom-terms-link">Regulamin i Politykę Prywatności</a>.
+            Płatności online obsługuje <strong>Autopay S.A.</strong>, wysyłki realizujemy kurierem <strong>GLS</strong> (15 zł, wysyłka pon-śr).
+          </div>
+        </div>
+      </div>
+      <div class="bottom-terms-actions">
+        <button class="bottom-terms-btn" id="btn-accept-site-terms">
+          Akceptuję i przechodzę do sklepu
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- ORDER SUCCESS MODAL -->
@@ -2671,12 +2828,36 @@
     const custEmailInput = document.getElementById('cust-email');
     const custAddressInput = document.getElementById('cust-address');
     const checkoutErrorMsg = document.getElementById('checkout-error-msg');
+    const termsContainer = document.getElementById('cust-terms-container');
+    const termsCheckbox = document.getElementById('cust-terms');
+
+    // Default unchecked on start
+    if (termsCheckbox) {
+      termsCheckbox.checked = false;
+      termsCheckbox.addEventListener('change', () => {
+        if (termsCheckbox.checked) {
+          if (termsContainer) {
+            termsContainer.style.borderColor = 'rgba(217, 164, 65, 0.35)';
+            termsContainer.style.background = 'rgba(0,0,0,0.18)';
+            termsContainer.style.boxShadow = 'none';
+          }
+          if (checkoutErrorMsg && checkoutErrorMsg.innerText.includes('Regulamin')) {
+            checkoutErrorMsg.style.display = 'none';
+          }
+        }
+      });
+    }
 
     function clearInputErrors() {
       if (custNameInput) custNameInput.style.borderColor = '';
       if (custPhoneInput) custPhoneInput.style.borderColor = '';
       if (custEmailInput) custEmailInput.style.borderColor = '';
       if (custAddressInput) custAddressInput.style.borderColor = '';
+      if (termsContainer && termsCheckbox && termsCheckbox.checked) {
+        termsContainer.style.borderColor = 'rgba(217, 164, 65, 0.35)';
+        termsContainer.style.background = 'rgba(0,0,0,0.18)';
+        termsContainer.style.boxShadow = 'none';
+      }
       if (checkoutErrorMsg) {
         checkoutErrorMsg.style.display = 'none';
         checkoutErrorMsg.innerText = '';
@@ -2722,13 +2903,39 @@
           hasError = true;
         }
 
+        if (!termsCheckbox || !termsCheckbox.checked) {
+          if (termsContainer) {
+            termsContainer.style.borderColor = '#ff6b6b';
+            termsContainer.style.background = 'rgba(255, 107, 107, 0.15)';
+            termsContainer.style.boxShadow = '0 0 10px rgba(255, 107, 107, 0.35)';
+          }
+          errorList.push('Akceptacja Regulaminu i Polityki Prywatności');
+          hasError = true;
+        } else if (termsContainer) {
+          termsContainer.style.borderColor = 'rgba(217, 164, 65, 0.35)';
+          termsContainer.style.background = 'rgba(0,0,0,0.18)';
+          termsContainer.style.boxShadow = 'none';
+        }
+
         if (hasError) {
-          const errMsg = '⚠️ Popraw dane: ' + errorList.join(', ');
+          let errMsg = '';
+          if (errorList.length === 1 && errorList[0].includes('Regulamin')) {
+            errMsg = '⚠️ Aby złożyć zamówienie, musisz zaznaczyć akceptację Regulaminu i Polityki Prywatności!';
+          } else {
+            errMsg = '⚠️ Popraw dane: ' + errorList.join(', ');
+          }
+
           if (checkoutErrorMsg) {
             checkoutErrorMsg.innerText = errMsg;
             checkoutErrorMsg.style.display = 'block';
           }
           showToast(errMsg);
+
+          if (!termsCheckbox || !termsCheckbox.checked) {
+            if (termsContainer && typeof termsContainer.scrollIntoView === 'function') {
+              termsContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }
           return;
         }
 
@@ -2762,12 +2969,7 @@
             body: JSON.stringify({
               amount: payAmount,
               title: payTitle,
-              email: email,
-              name: name,
-              phone: phone,
-              address: address,
-              notes: notes,
-              cart: cart
+              email: email
             })
           });
 
@@ -2864,6 +3066,7 @@
         if (custAddressInput) custAddressInput.value = '';
         const notesInput = document.getElementById('cust-notes');
         if (notesInput) notesInput.value = '';
+        if (termsCheckbox) termsCheckbox.checked = false;
 
         // Show confirmation modal
         const successModal = document.getElementById('order-success-modal');
@@ -2882,9 +3085,49 @@
       document.body.style.overflow = '';
     });
 
+    // SITE ENTRY TERMS & PRIVACY BOTTOM POPUP BANNER LOGIC
+    const siteTermsBanner = document.getElementById('site-terms-banner');
+    const acceptSiteTermsBtn = document.getElementById('btn-accept-site-terms');
+
+    function checkSiteTermsPopup() {
+      try {
+        const accepted = localStorage.getItem('sery_terms_accepted');
+        if (!accepted && siteTermsBanner) {
+          // Subtle delayed entry so layout has rendered
+          setTimeout(() => {
+            siteTermsBanner.classList.add('visible');
+            document.body.classList.add('has-bottom-terms');
+          }, 300);
+        }
+      } catch (e) {
+        if (siteTermsBanner) {
+          setTimeout(() => {
+            siteTermsBanner.classList.add('visible');
+            document.body.classList.add('has-bottom-terms');
+          }, 300);
+        }
+      }
+    }
+
+    if (acceptSiteTermsBtn) {
+      acceptSiteTermsBtn.addEventListener('click', () => {
+        try {
+          localStorage.setItem('sery_terms_accepted', 'true');
+        } catch (e) {
+          console.warn('LocalStorage error:', e);
+        }
+        if (siteTermsBanner) {
+          siteTermsBanner.classList.remove('visible');
+        }
+        document.body.classList.remove('has-bottom-terms');
+        showToast('✔ Zaakceptowano Regulamin i Politykę Prywatności');
+      });
+    }
+
     // INITIALIZATION
     renderProducts();
     updateCartUI();
+    checkSiteTermsPopup();
   </script>
 </body>
 </html>
