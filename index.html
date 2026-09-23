@@ -598,6 +598,71 @@
       position: relative;
     }
 
+    .card-img-wrapper {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-light);
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .store-card:hover .card-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .card-details {
+      margin-bottom: 0.6rem;
+      font-size: 0.78rem;
+      color: rgba(245, 232, 208, 0.85);
+    }
+
+    .card-details summary {
+      cursor: pointer;
+      color: var(--cheese-gold);
+      font-weight: 600;
+      font-size: 0.8rem;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card-details summary::before {
+      content: '▸';
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+
+    .card-details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .card-details summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .card-details-content {
+      padding: 0.6rem 0 0.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      line-height: 1.4;
+    }
+
+    .card-details-content strong {
+      color: var(--warm-cream);
+    }
+
     .store-card:hover {
       border-color: var(--cheese-gold);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
@@ -2364,34 +2429,35 @@
     // FULL PRODUCTS CATALOG DATABASE
     const PRODUCTS = [
       // MAŁE SERKI
-      { id: 'serek-maly-wedzony', name: 'Serek mały wędzony', price: 2.50, unit: 'szt', category: 'male-sery', tag: 'Smak Dymu' },
-      { id: 'serek-maly-bialy', name: 'Serek mały biały', price: 2.50, unit: 'szt', category: 'male-sery', tag: 'Świeży' },
-      { id: 'serek-maly-czosnek-niedz', name: 'Serek mały biały z czosnkiem niedźwiedzim', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Ziołowy' },
-      { id: 'serek-maly-czarnuszka', name: 'Serek mały biały z czarnuszką', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Aromatyczny' },
-      { id: 'serek-maly-papryka', name: 'Serek mały biały z papryką', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Lekko Ostrzejszy' },
-      { id: 'serek-maly-pomidory-bazylia', name: 'Serek mały biały z suszonymi pomidorami i bazylią', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Włoska Nuta' },
-      { id: 'serek-maly-boczek', name: 'Serek mały z boczkiem', price: 3.50, unit: 'szt', category: 'male-sery', tag: 'Wyrazisty' },
-      { id: 'zestaw-serkow', name: 'Zestaw serków', price: 23.00, unit: 'szt', category: 'male-sery', tag: 'Super Zestaw' },
+      { id: 'serek-maly-wedzony', name: 'Serek mały wędzony', price: 2.50, unit: 'szt', category: 'male-sery', tag: 'Smak Dymu', image: 'https://i.postimg.cc/6QYBVDsd/serekmalywedzony.jpg', weight: 'ok. 40 g', composition: 'mleko krowie, sól, podpuszczka (wędzony w tradycyjnej wędzarni)', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'serek-maly-bialy', name: 'Serek mały biały', price: 2.50, unit: 'szt', category: 'male-sery', tag: 'Świeży', image: 'https://i.postimg.cc/Pq2dbBG1/serekmalybialy.jpg', weight: 'ok. 40 g', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'serek-maly-czosnek-niedz', name: 'Serek mały biały z czosnkiem niedźwiedzim', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Ziołowy', image: 'https://i.postimg.cc/Pq2dbBG1/serekmalybialy.jpg', weight: 'ok. 40 g', composition: 'mleko krowie, sól, podpuszczka, czosnek niedźwiedzi', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'serek-maly-czarnuszka', name: 'Serek mały biały z czarnuszką', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Aromatyczny', image: 'https://i.postimg.cc/xdt9GWrN/serekmalybialyzczarnuszka.jpg', weight: 'ok. 40 g', composition: 'mleko krowie, sól, podpuszczka, czarnuszka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'serek-maly-papryka', name: 'Serek mały biały z papryką', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Lekko Ostrzejszy', image: 'https://i.postimg.cc/252CdPpv/serekmalybialyzpapryka.jpg', weight: 'ok. 40 g', composition: 'mleko krowie, sól, podpuszczka, papryka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'serek-maly-pomidory-bazylia', name: 'Serek mały biały z suszonymi pomidorami i bazylią', price: 3.00, unit: 'szt', category: 'male-sery', tag: 'Włoska Nuta', image: 'https://i.postimg.cc/Pq2dbBG1/serekmalybialy.jpg', weight: 'ok. 40 g', composition: 'mleko krowie, sól, podpuszczka, suszone pomidory, bazylia', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'serek-maly-boczek', name: 'Serek mały z boczkiem', price: 3.50, unit: 'szt', category: 'male-sery', tag: 'Wyrazisty', image: 'https://i.postimg.cc/8zdpc7ZS/serekzboczkiem.jpg', weight: 'ok. 40 g', composition: 'mleko krowie, sól, podpuszczka, boczek wędzony', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'zestaw-serkow', name: 'Zestaw serków', price: 23.00, unit: 'szt', category: 'male-sery', tag: 'Super Zestaw', image: 'https://i.postimg.cc/7Lxx2qRw/zestawserkow.jpg', weight: '8 szt. x ok. 40 g (łącznie ok. 320 g): 2 białe, 2 z czosnkiem niedźwiedzim, 2 z suszonymi pomidorami, 2 z papryką', composition: 'mleko krowie, sól, podpuszczka, dodatki wg smaku (czosnek niedźwiedzi / suszone pomidory i bazylia / papryka)', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
 
       // GOŁKI I KOLBY
-      { id: 'golka-mala', name: 'Gołka mała', price: 10.00, unit: 'szt', category: 'golki', tag: 'Tradycja' },
-      { id: 'golka-wedzona', name: 'Gołka wędzona', price: 12.00, unit: 'szt', category: 'golki', tag: 'Bestseller' },
-      { id: 'golka-srednia', name: 'Gołka średnia', price: 15.00, unit: 'szt', category: 'golki', tag: 'Klasyk' },
-      { id: 'golka-srednia-biala', name: 'Gołka średnia biała', price: 15.00, unit: 'szt', category: 'golki', tag: 'Świeża' },
-      { id: 'golka-biala-czosnek-niedz', name: 'Gołka biała z czosnkiem niedźwiedzim', price: 16.00, unit: 'szt', category: 'golki', tag: 'Ziołowa' },
-      { id: 'golka-biala-czarnuszka', name: 'Gołka biała z czarnuszką', price: 16.00, unit: 'szt', category: 'golki', tag: 'Swojska' },
-      { id: 'golka-biala-papryka', name: 'Gołka biała z papryką', price: 16.00, unit: 'szt', category: 'golki', tag: 'Pikantna' },
-      { id: 'golka-biala-pomidory-bazylia', name: 'Gołka biała z suszonymi pomidorami i bazylią', price: 16.00, unit: 'szt', category: 'golki', tag: 'Aromatyczna' },
-      { id: 'golka-maslana', name: 'Gołka maślana', price: 16.00, unit: 'szt', category: 'golki', tag: 'Aksamitna' },
-      { id: 'golka-tradycyjna', name: 'Gołka tradycyjna', price: 18.00, unit: 'szt', category: 'golki', tag: 'Mistrzowska' },
-      { id: 'golka-owcza', name: 'Gołka owcza', price: 20.00, unit: 'szt', category: 'golki', tag: 'Mleko Owcze' },
-      { id: 'kolba-duza', name: 'Kolba duża', price: 15.00, unit: 'szt', category: 'golki', tag: 'Duża Porcja' },
-      { id: 'wrzeciono-oryginalne', name: 'Wrzeciono oryginalne', price: 60.00, unit: 'szt', category: 'golki', tag: 'Unikat / Prezent' },
+      { id: 'golka-mala', name: 'Gołka mała', price: 10.00, unit: 'szt', category: 'golki', tag: 'Tradycja', image: 'https://i.postimg.cc/BvMJ5dWL/golkamala.jpg', weight: 'ok. 15 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-wedzona', name: 'Gołka wędzona', price: 12.00, unit: 'szt', category: 'golki', tag: 'Bestseller', image: 'https://i.postimg.cc/8CtTdq87/golkawedzona.jpg', weight: 'ok. 20 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka (produkt wędzony)', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-srednia', name: 'Gołka średnia', price: 15.00, unit: 'szt', category: 'golki', tag: 'Klasyk', image: 'https://i.postimg.cc/vm3G7pRc/golkasrednia.jpg', weight: 'ok. 24 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-srednia-biala', name: 'Gołka średnia biała', price: 15.00, unit: 'szt', category: 'golki', tag: 'Świeża', image: 'https://i.postimg.cc/fbww9MPb/golkasredniabiala.jpg', weight: 'ok. 25 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-biala-czosnek-niedz', name: 'Gołka biała z czosnkiem niedźwiedzim', price: 16.00, unit: 'szt', category: 'golki', tag: 'Ziołowa', image: 'https://i.postimg.cc/Mp06Hn92/golkabialazczosnkiemniedzwiedzim.jpg', weight: 'ok. 25 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka, czosnek niedźwiedzi', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-biala-czarnuszka', name: 'Gołka biała z czarnuszką', price: 16.00, unit: 'szt', category: 'golki', tag: 'Swojska', image: 'https://i.postimg.cc/fbww9MPb/golkasredniabiala.jpg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka, czarnuszka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-biala-papryka', name: 'Gołka biała z papryką', price: 16.00, unit: 'szt', category: 'golki', tag: 'Pikantna', image: 'https://i.postimg.cc/fbww9MPb/golkasredniabiala.jpg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka, papryka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-biala-pomidory-bazylia', name: 'Gołka biała z suszonymi pomidorami i bazylią', price: 16.00, unit: 'szt', category: 'golki', tag: 'Aromatyczna', image: 'https://i.postimg.cc/CxCh5Rm6/golkabialazsuszonymipomidoramiibazylia.jpg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka, suszone pomidory, bazylia', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-maslana', name: 'Gołka maślana', price: 16.00, unit: 'szt', category: 'golki', tag: 'Aksamitna', image: 'https://i.postimg.cc/dVRs3h4n/golkamaslana.jpg', weight: 'ok. 25 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-tradycyjna', name: 'Gołka tradycyjna', price: 18.00, unit: 'szt', category: 'golki', tag: 'Mistrzowska', image: 'https://i.postimg.cc/bvzztq5N/golkatradycyjna.jpg', weight: 'ok. 27 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'golka-owcza', name: 'Gołka owcza', price: 20.00, unit: 'szt', category: 'golki', tag: 'Mleko Owcze', image: 'https://i.postimg.cc/LsHH1mW9/golkaowcza.jpg', weight: 'ok. 30 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko owcze, sól, podpuszczka', allergens: 'mleko (owcze)', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'kolba-duza', name: 'Kolba duża', price: 15.00, unit: 'szt', category: 'golki', tag: 'Duża Porcja', image: 'https://i.postimg.cc/R0Xv1jr0/kolbaduza.jpg', weight: 'ok. 22 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'wrzeciono-oryginalne', name: 'Wrzeciono oryginalne', price: 60.00, unit: 'szt', category: 'golki', tag: 'Unikat / Prezent', image: 'https://i.postimg.cc/yNVVZ7GS/wrzecionooryginalne.jpg', weight: 'ok. 70-80 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
 
       // INNE SERY I NABIAŁ
-      { id: 'korbacz-wedzony', name: 'Korbacz (wiązka) wędzony', price: 6.00, unit: 'szt', category: 'inne-sery', tag: 'Nici Serowe' },
-      { id: 'korbacz-bialy', name: 'Korbacz (wiązka) biały', price: 6.00, unit: 'szt', category: 'inne-sery', tag: 'Delikatne Nici' },
-      { id: 'bundz-naturalny', name: 'Bundz naturalny', price: 35.00, unit: 'kg', category: 'inne-sery', tag: 'Świeży Owczy / Krowi' },
+      { id: 'korbacz-wedzony', name: 'Korbacz (wiązka) wędzony', price: 6.00, unit: 'szt', category: 'inne-sery', tag: 'Nici Serowe', image: 'https://i.postimg.cc/6Q99vBP8/korbaczwedzony.jpg', weight: 'ok. 100 g', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka (produkt wędzony)', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'korbacz-bialy', name: 'Korbacz (wiązka) biały', price: 6.00, unit: 'szt', category: 'inne-sery', tag: 'Delikatne Nici', image: 'https://i.postimg.cc/XvVVCnPX/korbaczbialy.jpg', weight: 'ok. 100 g', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'ser-bacowki-familijny', name: 'Ser bacówki familijny', price: 50.00, unit: 'szt', category: 'inne-sery', tag: 'Rodzinna Receptura', image: 'https://i.postimg.cc/4xvfyYBL/serbundz.jpg', weight: 'ok. 70 dkg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko owcze i/lub krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
+      { id: 'bundz-naturalny', name: 'Bundz naturalny', price: 35.00, unit: 'kg', category: 'inne-sery', tag: 'Świeży Owczy / Krowi', image: 'https://i.postimg.cc/4xvfyYBL/serbundz.jpg', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz', composition: 'mleko owcze i/lub krowie, sól, podpuszczka', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji' },
       { 
         id: 'serki-podpuszczkowe', 
         name: 'Serki podpuszczkowe', 
@@ -2399,6 +2465,12 @@
         unit: 'kg', 
         category: 'inne-sery', 
         tag: 'Wybierz Smak',
+        image: 'https://i.postimg.cc/5254yXnK/serekpodpuszczkowyzczosnkiemniedzwiedzim.jpg',
+        composition: 'mleko krowie, sól, podpuszczka, dodatek smakowy zgodnie z wybranym wariantem',
+        allergens: 'mleko; orzechy (dotyczy wariantu z orzechami włoskimi)',
+        storage: 'przechowywać w temperaturze 2-8°C',
+        shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         variants: [
           'czosnek niedźwiedzi',
           'suszone pomidory',
@@ -2409,8 +2481,8 @@
           'rodzynki'
         ]
       },
-      { id: 'bryndza', name: 'Bryndza podhalańska', price: 10.00, unit: 'szt', category: 'inne-sery', tag: 'Do Smarowania' },
-      { id: 'maslo-swojskie', name: 'Masło swojskie', price: 14.00, unit: 'szt', category: 'inne-sery', tag: 'Tradycyjne' },
+      { id: 'bryndza', name: 'Bryndza podhalańska', price: 10.00, unit: 'szt', category: 'inne-sery', tag: 'Do Smarowania', image: 'https://i.postimg.cc/RZ1ShWgz/bryndza.jpg', composition: 'ser owczy/krowi, sól (bez dodatków)', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'maslo-swojskie', name: 'Masło swojskie', price: 14.00, unit: 'szt', category: 'inne-sery', tag: 'Tradycyjne', image: 'https://i.postimg.cc/vZ7YT40w/masloswojskie.jpg', composition: 'śmietana (mleko krowie), min. 82% tłuszczu (bez dodatków)', allergens: 'mleko', storage: 'przechowywać w temperaturze 2-8°C', shelfLife: '21 dni (produkt luzem) / 60 dni (produkt pakowany próżniowo) – w zależności od daty produkcji', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
 
       // PRZETWORY I SYROPY
       { 
@@ -2420,6 +2492,11 @@
         unit: 'słoik', 
         category: 'przetwory', 
         tag: 'Do Serów',
+        image: 'https://i.postimg.cc/43JJ9X0g/konfiturazmaliny-czarnejjagody-borowka.jpg',
+        composition: 'skład zależy od wybranego smaku – malina: owoce maliny 70%, cukier 30%, pektyna; czarna jagoda: owoce czarnej jagody 70%, cukier 30%, pektyna; brusznica: owoce borówki brusznicy 80%, cukier 20%, pektyna; żurawina: owoce żurawiny 50%, cukier 50%',
+        allergens: 'brak głównych alergenów',
+        weight: '340 g (cena za kg: 52,94 zł/kg)',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         variants: [
           'żurawina',
           'malina',
@@ -2427,8 +2504,8 @@
           'brusznica'
         ]
       },
-      { id: 'ucierane-platki-rozy', name: 'Ucierane płatki róży', price: 25.00, unit: 'słoik', category: 'przetwory', tag: 'Rarytas' },
-      { id: 'czosnek-niedzwiecki-sloik', name: 'Czosnek niedźwiedzi w słoiku', price: 25.00, unit: 'słoik', category: 'przetwory', tag: '100% Ziół' },
+      { id: 'ucierane-platki-rozy', name: 'Ucierane płatki róży', price: 25.00, unit: 'słoik', category: 'przetwory', tag: 'Rarytas', image: 'https://i.postimg.cc/K87Gj10b/platkirozyucierane.jpg', composition: 'płatki róży, cukier', allergens: 'brak głównych alergenów', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'czosnek-niedzwiecki-sloik', name: 'Czosnek niedźwiedzi w słoiku', price: 25.00, unit: 'słoik', category: 'przetwory', tag: '100% Ziół', image: 'https://i.postimg.cc/hGSSdK5k/liscieczosnkuniedzwiedziego.jpg', composition: 'liście czosnku niedźwiedziego 55%, oliwa 45%', allergens: 'brak głównych alergenów', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
       { 
         id: 'syropy-500ml', 
         name: 'Syrop naturalny 500 ml', 
@@ -2436,9 +2513,15 @@
         unit: 'szt', 
         category: 'przetwory', 
         tag: 'Zdrowie z Natury',
+        image: 'https://i.postimg.cc/zfJJgqc9/syropczarnajagodaaroniadzikarozamalina.jpg',
+        weight: '500 ml (cena za litr: 50 zł/l)',
+        storage: 'przechowywać w suchym i chłodnym miejscu; po otwarciu przechowywać w lodówce',
+        note: 'Produkt pasteryzowany. W syropie może powstać naturalny osad oraz piana świadcząca o zawartości soku owocowego – jest to cecha naturalna, nie wada produktu.',
+        composition: 'Skład zależy od wybranego smaku: czarna jagoda – sok z czarnej jagody 50%, cukier 50%; aronia – sok z aronii 50%, cukier 50%; dzika róża – sok z dzikiej róży 40%, woda 10%, cukier 50%; malina – sok z maliny 50%, cukier 50%; czarna porzeczka – sok z czarnej porzeczki 50%, cukier 50%; borówka brusznica – sok z borówki 60%, cukier 40%; owoc bzu – sok z owocu bzu 50%, cukier 50%; kwiat bzu – wyciąg z kwiatu czarnego bzu 50%, cukier 50%; głóg – sok z głogu 40%, woda 10%, cukier 50%; rokitnik – sok z rokitnika 50%, cukier 50%; pigwowiec – sok z pigwowca 50%, cukier 50%; imbir – sok z imbiru 50%, cukier 50%',
+        allergens: 'brak głównych alergenów',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         variants: [
           'pigwowiec',
-          'sosna',
           'imbir',
           'czarna jagoda',
           'czarna porzeczka',
@@ -2452,8 +2535,8 @@
           'dzika róża'
         ]
       },
-      { id: 'zurawina-blotna', name: 'Żurawina błotna', price: 10.00, unit: 'słoik', category: 'przetwory', tag: 'Swojski Słoik' },
-      { id: 'konfitura-z-maliny-maly', name: 'Konfitura z maliny', price: 10.00, unit: 'słoik', category: 'przetwory', tag: 'Słodka Nuta' },
+      { id: 'zurawina-blotna', name: 'Żurawina błotna', price: 10.00, unit: 'słoik', category: 'przetwory', tag: 'Swojski Słoik', image: 'https://i.postimg.cc/cJssndzZ/zurawina.jpg', composition: 'owoce żurawiny 50%, cukier 50%', allergens: 'brak głównych alergenów', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
+      { id: 'konfitura-z-maliny-maly', name: 'Konfitura z maliny', price: 10.00, unit: 'słoik', category: 'przetwory', tag: 'Słodka Nuta', image: 'https://i.postimg.cc/43JJ9X0g/konfiturazmaliny-czarnejjagody-borowka.jpg', composition: 'owoce maliny 70%, cukier 30%, pektyna', allergens: 'brak głównych alergenów', weight: '340 g (cena za kg: 29,41 zł/kg)', producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz' },
 
       // GRZYBY
       { 
@@ -2463,6 +2546,10 @@
         unit: 'słoik', 
         category: 'grzyby', 
         tag: 'Król Lasu',
+        image: 'https://i.postimg.cc/3R25S6Vg/583244660-841259948282594-5103694598711860896-n-(1).jpg',
+        weight: '350 ml (cena za litr: 71,43 zł/l)',
+        composition: 'borowiki leśne, zalewa octowa, przyprawy',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         description: 'Tradycyjne szlachetne borowiki leśne w aromatycznej zalewie octowej.'
       },
       { 
@@ -2472,6 +2559,10 @@
         unit: 'słoik', 
         category: 'grzyby', 
         tag: 'Górski Rarytas',
+        image: 'https://i.postimg.cc/3R25S6Vg/583244660-841259948282594-5103694598711860896-n-(1).jpg',
+        weight: '350 ml (cena za litr: 71,43 zł/l)',
+        composition: 'rydze leśne, zalewa octowa, przyprawy',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         description: 'Prawdziwe podhalańskie rydze marynowane w delikatnej zalewie.'
       },
       { 
@@ -2481,6 +2572,10 @@
         unit: 'słoik', 
         category: 'grzyby', 
         tag: 'Grzyby Marynowane',
+        image: 'https://i.postimg.cc/3R25S6Vg/583244660-841259948282594-5103694598711860896-n-(1).jpg',
+        weight: '350 ml (cena za litr: 71,43 zł/l)',
+        composition: 'kurki leśne, zalewa octowa, przyprawy',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         description: 'Młode, chrupiące kurki leśne marynowane według tradycyjnego przepisu.'
       },
       { 
@@ -2490,6 +2585,10 @@
         unit: 'słoik', 
         category: 'grzyby', 
         tag: 'Grzyby Marynowane',
+        image: 'https://i.postimg.cc/3R25S6Vg/583244660-841259948282594-5103694598711860896-n-(1).jpg',
+        weight: '350 ml (cena za litr: 57,14 zł/l)',
+        composition: 'podgrzybki leśne, zalewa octowa, przyprawy',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         description: 'Wyselekcjonowane podgrzybki w korzennej zalewie marynowanej.'
       },
       { 
@@ -2499,6 +2598,10 @@
         unit: 'słoik', 
         category: 'grzyby', 
         tag: 'Na zimno lub na ciepło',
+        image: 'https://i.postimg.cc/3R25S6Vg/583244660-841259948282594-5103694598711860896-n-(1).jpg',
+        weight: '350 ml (cena za litr: 57,14 zł/l)',
+        composition: 'rydze leśne, sos pomidorowy (pomidory, przyprawy)',
+        producer: 'Paweł Długopolski Handel Obwoźny, Długopole 88, 34-471 Ludźmierz',
         description: 'Rydze po cygańsku w sosie pomidorowym a\'la sałatka, którą można zjeść na zimno lub na ciepło.'
       }
     ];
@@ -2553,6 +2656,22 @@
           <p style="font-size: 0.82rem; color: rgba(245, 232, 208, 0.78); line-height: 1.35; margin-bottom: 0.6rem;">${product.description}</p>
         ` : '';
 
+        let detailsRows = '';
+        if (product.weight) detailsRows += `<div><strong>Waga/pojemność:</strong> ${product.weight}</div>`;
+        if (product.composition) detailsRows += `<div><strong>Skład:</strong> ${product.composition}</div>`;
+        if (product.allergens) detailsRows += `<div><strong>Alergeny:</strong> ${product.allergens}</div>`;
+        if (product.storage) detailsRows += `<div><strong>Przechowywanie:</strong> ${product.storage}</div>`;
+        if (product.shelfLife) detailsRows += `<div><strong>Termin przydatności:</strong> ${product.shelfLife}</div>`;
+        if (product.note) detailsRows += `<div>${product.note}</div>`;
+        if (product.producer) detailsRows += `<div><strong>Producent:</strong> ${product.producer}</div>`;
+
+        let detailsHTML = detailsRows ? `
+          <details class="card-details">
+            <summary>Szczegóły produktu</summary>
+            <div class="card-details-content">${detailsRows}</div>
+          </details>
+        ` : '';
+
         let variantHTML = '';
         if (product.variants && product.variants.length > 0) {
           variantHTML = `
@@ -2565,13 +2684,21 @@
           `;
         }
 
+        let imgHTML = product.image ? `
+          <div class="card-img-wrapper">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" width="400" height="300" />
+          </div>
+        ` : '';
+
         card.innerHTML = `
+          ${imgHTML}
           <div class="card-top">
             <div class="card-badge-row">
               <span class="card-tag">${product.tag}</span>
             </div>
             <h3 class="card-title">${product.name}</h3>
             ${descHTML}
+            ${detailsHTML}
             ${variantHTML}
           </div>
 
