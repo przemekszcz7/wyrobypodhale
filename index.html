@@ -1303,6 +1303,10 @@
       height: 24px;
     }
 
+    .payment-banner-cards {
+      height: 26px;
+    }
+
     .delivery-option-label {
       display: flex;
       align-items: center;
@@ -2196,7 +2200,7 @@
             <ul class="shipping-info-list">
               <li><span>📦</span> <strong>Wysyłka kurierem GLS</strong></li>
               <li><span>📅</span> <strong>Wysyłki od poniedziałku do środy</strong></li>
-              <li><span>💳</span> <strong>Płatność online Autopay (15 zł)</strong> (BLIK, szybki przelew online)</li>
+              <li><span>💳</span> <strong>Płatność online Autopay (15 zł)</strong> (BLIK, szybki przelew online, karta)</li>
             </ul>
             <a href="https://www.facebook.com/profile.php?id=100071957902208" target="_blank" rel="noopener" class="btn" style="margin-top: auto;">ZAMÓW PRZEZ FACEBOOK</a>
           </div>
@@ -2304,13 +2308,14 @@
             <div class="delivery-options">
               <div class="delivery-option-label" style="border-color: var(--cheese-gold);">
                 <input type="radio" name="delivery" value="15_autopay" class="delivery-option-input" checked style="display: none;" />
-                <span>Kurier GLS + Autopay (BLIK, szybki przelew online)</span>
+                <span>Kurier GLS + Autopay (BLIK, szybki przelew online, karta)</span>
                 <strong style="color: var(--cheese-gold);">15,00 zł</strong>
               </div>
             </div>
             <div class="payment-banner-row">
               <img src="https://i.postimg.cc/KznH2JwM/7.jpg" alt="Płatności Autopay" class="payment-banner-img" />
               <img src="https://i.postimg.cc/bNYF70TG/530-t-BLIK.png" alt="BLIK" class="payment-banner-img payment-banner-blik" />
+              <img src="https://i.ibb.co/N6xLdQV6/mastercard-visa-123x123.png" alt="Visa, Mastercard" class="payment-banner-img payment-banner-cards" />
             </div>
           </div>
 
@@ -3205,7 +3210,7 @@
         }
 
         // FALLBACK W PRZYPADKU BRAKU PRZEKIEROWANIA Z API
-        const shippingType = 'GLS + Płatność online Autopay (BLIK, szybki przelew online) (15,00 zł)';
+        const shippingType = 'GLS + Płatność online Autopay (BLIK, szybki przelew online, karta) (15,00 zł)';
         const shippingCost = 15.00;
 
         let itemsHTML = '';
